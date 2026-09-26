@@ -159,7 +159,7 @@ img { max-width: 100%; }
 /* journey: horizontal rail under the hero */
 .journey-wrap { padding-top: 20px; max-width: 1680px; padding-left: clamp(16px, 2.4vw, 40px); padding-right: clamp(16px, 2.4vw, 40px); }
 .journey-wrap .journey { gap: 16px; }
-.j-hire { margin-top: auto; align-self: flex-start; }
+.j-hire { margin-top: auto; align-self: flex-start; white-space: nowrap; }
 .journey > li.next p { margin-bottom: 10px; }
 .journey-title { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
 .journey { position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; padding-top: 22px; }
@@ -232,6 +232,15 @@ img { max-width: 100%; }
 .hire label { font: 700 12px var(--mono); text-transform: uppercase; letter-spacing: .04em; margin-top: 8px; }
 .hire input, .hire select, .hire textarea { width: 100%; font: 16px var(--body); padding: 10px 12px; border: var(--thin); border-radius: 10px; background: #fff; color: var(--ink); }
 .hire input:focus, .hire select:focus, .hire textarea:focus { outline: 3px solid var(--yellow); outline-offset: 1px; }
+.hire-reasons { border: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.hire-reasons legend { font: 700 12px var(--mono); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
+.hire .hire-chip { margin: 0; font: 600 14px var(--body); text-transform: none; letter-spacing: 0; cursor: pointer; }
+.hire-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.hire-chip span { display: inline-block; padding: 8px 14px; border: var(--thin); border-radius: 999px; background: #fff; transition: transform .1s, background .1s; }
+.hire-chip:hover span { background: var(--paper); }
+.hire-chip input:checked + span { background: var(--yellow); box-shadow: 3px 3px 0 var(--ink); font-weight: 700; }
+.hire-chip input:focus-visible + span { outline: 3px solid var(--blue); outline-offset: 2px; }
+.hire-chip:active span { transform: scale(.96); }
 .hire-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .hire-row > div { display: flex; flex-direction: column; gap: 6px; }
 .hire-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }

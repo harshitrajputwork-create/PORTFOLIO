@@ -9,6 +9,7 @@ const ENDPOINT = "https://formsubmit.co/ajax/harshitrajputwork@gmail.com";
 const EMAIL = "harshitrajputwork@gmail.com";
 
 type Status = "idle" | "sending" | "sent" | "error";
+const REASONS = ["Full-time PM role", "Freelance product project", "Product advice or a quick consult", "Something else"];
 
 export default function HireMe({ label = "Work with me", className = "btn bg-yellow" }: { label?: string; className?: string }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -65,13 +66,15 @@ export default function HireMe({ label = "Work with me", className = "btn bg-yel
               <h3 id="hire-title">Let&apos;s work together</h3>
               <p className="hire-sub">Hiring for a PM role, or need product help on a project? Tell me a little and it comes straight to my inbox.</p>
 
-              <label htmlFor="hire-reason">What are you looking for?</label>
-              <select id="hire-reason" name="reason" required defaultValue="Full-time PM role">
-                <option>Full-time PM role</option>
-                <option>Freelance product project</option>
-                <option>Product advice or a quick consult</option>
-                <option>Something else</option>
-              </select>
+              <fieldset className="hire-reasons">
+                <legend>What are you looking for?</legend>
+                {REASONS.map((r, i) => (
+                  <label key={r} className="hire-chip">
+                    <input type="radio" name="reason" value={r} defaultChecked={i === 0} required />
+                    <span>{r}</span>
+                  </label>
+                ))}
+              </fieldset>
 
               <div className="hire-row">
                 <div>
