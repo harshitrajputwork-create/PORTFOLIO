@@ -266,13 +266,14 @@ export const caseStudies: CaseStudy[] = [
 export const friends: { title: string; by: string; summary: string; link: string }[] = [
   {
     title: "MockAI: PM Interview Engine",
-    by: "Anant",
-    summary: "An AI mock-interviewer for product management interviews.", // TODO: refine
-    link: "https://app.notion.com/p/MockAI-PM-Interview-Engine-ba62b6ff95c9829ca6b5019cd9452119",
+    by: "Anant Trivedi",
+    summary:
+      "An AI interviewer for PM case interviews: 15 real cases (WhatsApp Search, Airbnb supply…), 4 difficulty levels up to MAANG, voice mode, 6-dimension rubric scoring and focused drills.",
+    link: "https://mockaipminterview.lovable.app/",
   },
   {
     title: "Anant's portfolio",
-    by: "Anant",
+    by: "Anant Trivedi",
     summary: "More PM projects & case studies.",
     link: "https://app.notion.com/p/Hi-I-m-Anant-1-15f2b6ff95c982c2aa8e81abe4c701fc",
   },
