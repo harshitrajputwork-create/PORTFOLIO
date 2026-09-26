@@ -143,8 +143,8 @@ export const caseBodies: Record<string, Block[]> = {
     {
       kind: "video",
       heading: "See it work",
-      src: "",
-      caption: "A 30-second demo of the circuit switching between light and dark.",
+      src: "/case/ldr/demo.mp4",
+      caption: "35-second demo of the circuit switching between light and dark states.",
     },
     {
       kind: "text",

@@ -117,7 +117,7 @@ function Section({ b }: { b: Block }) {
             {/youtube\.com|youtu\.be|vimeo\.com|tinkercad\.com|drive\.google\.com/.test(b.src) ? (
               <iframe src={b.src} title={b.caption} className="video-frame" allowFullScreen />
             ) : (
-              <video src={b.src} poster={b.poster} controls playsInline muted loop autoPlay className="video" />
+              <video src={b.src} poster={b.poster} controls playsInline muted loop autoPlay preload="metadata" className="video" />
             )}
           </div>
           <p className="cs-note">{b.caption}</p>
