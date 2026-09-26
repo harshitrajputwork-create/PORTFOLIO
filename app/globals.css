@@ -156,12 +156,12 @@ img { max-width: 100%; }
 /* journey */
 .journey { position: relative; display: grid; gap: 14px; margin-top: 26px; padding-left: 34px; }
 .journey::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; border-left: 3px solid var(--ink); }
-.journey li { position: relative; background: var(--card); border: var(--thin); border-radius: 12px; padding: 12px 16px; display: flex; flex-direction: column; gap: 2px; max-width: 760px; }
-.journey li::before { content: ""; position: absolute; left: -30px; top: 16px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--ink); }
-.journey li.now { border: var(--border); box-shadow: var(--shadow); }
-.journey li.now::before { background: var(--pink); }
-.journey li.next { border-style: dashed; background: transparent; }
-.journey li.next::before { background: var(--lime); }
+.journey > li { position: relative; background: var(--card); border: var(--thin); border-radius: 12px; padding: 12px 16px; display: flex; flex-direction: column; gap: 2px; max-width: 760px; }
+.journey > li::before { content: ""; position: absolute; left: -30px; top: 16px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--ink); }
+.journey > li.now { border: var(--border); box-shadow: var(--shadow); }
+.journey > li.now::before { background: var(--pink); }
+.journey > li.next { border-style: dashed; background: transparent; }
+.journey > li.next::before { background: var(--lime); }
 .j-when { font-size: 12.5px; color: var(--muted); font-weight: 700; }
 .journey b { font-size: 17px; }
 .journey p { font-size: 15.5px; }
@@ -173,6 +173,31 @@ img { max-width: 100%; }
 .contact-mail { margin-top: 14px; font-size: 16px; user-select: all; }
 .contact .cta-row { justify-content: center; }
 .footer { padding: 56px 20px 36px; text-align: center; font-size: 14px; font-weight: 700; }
+
+
+/* featured card with a live board */
+.feat-board { flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 10px; padding: 16px; }
+.feat-board iframe { display: block; width: 100%; flex: 1; min-height: 300px; border: var(--thin); border-radius: 10px; background: #fff; }
+.board-cap { font-size: 13px; line-height: 1.4; }
+.board-cap a { font-weight: 700; text-decoration: underline; }
+.feat-embed { grid-template-columns: 420px 1fr; }
+.feat-body { color: inherit; }
+
+/* "you can click this" cues */
+.cue { margin-top: 6px; font: 700 12px var(--mono); color: var(--ink); display: inline-flex; align-self: flex-start; gap: 6px; padding: 3px 9px; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--yellow); }
+.quest .cue { color: var(--ink); }
+.list-link:hover .cue, .quest:hover .cue { background: var(--pink); }
+
+/* journey tags */
+.j-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.j-tags li { font-size: 12.5px; font-weight: 700; border: 1.5px solid var(--ink); border-radius: 999px; padding: 2px 9px; background: var(--paper); }
+
+/* tap feedback */
+.btn, .proof-tile, .list-link, .quest, .feat-body, .mobile-bar a { -webkit-tap-highlight-color: transparent; }
+.proof-tile:active, .list-link:active, .quest:active { transform: translate(2px, 2px) scale(.99); }
+
+/* mobile quick-action bar */
+.mobile-bar { display: none; }
 
 /* ─── case pages: calmer ─── */
 .case-page { background: var(--paper); }
@@ -254,6 +279,21 @@ img { max-width: 100%; }
 
 /* responsive */
 @media (max-width: 900px) {
+  .mobile-bar {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
+    position: fixed; left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); z-index: 20;
+    padding: 6px; background: var(--ink); border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  }
+  .mobile-bar a { display: flex; align-items: center; justify-content: center; min-height: 44px; color: var(--paper); font-weight: 700; font-size: 14px; border-radius: 11px; transition: transform .1s, background .1s; }
+  .mobile-bar a:active { transform: scale(.94); background: #333; }
+  .mobile-bar .mb-cta { background: var(--pink); color: var(--ink); }
+  main:has(.mobile-bar) .footer { padding-bottom: 110px; }
+  .nav .btn.bg-pink { display: none; }
+  .logo { font-size: 22px; }
+  .feat-embed { grid-template-columns: 1fr; }
+  .feat-board iframe { min-height: 320px; }
+  .btn { min-height: 44px; }
+  .hero { padding-top: 28px; }
   .hero { grid-template-columns: 1fr; gap: 28px; }
   .hero-photo { justify-self: start; }
   .photo { width: 200px; height: 240px; }
