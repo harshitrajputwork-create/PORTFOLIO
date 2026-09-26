@@ -7,12 +7,12 @@ import {
   pillars,
   projects,
   caseStudies,
-  friends,
+  industries,
   experience,
   toolbox,
 } from "@/content/data";
 
-const marquee = ["DISCOVERY", "PRDs", "AI PROTOTYPES", "KPIs", "SQL", "SHIPPED", "UNIT ECONOMICS", "USER CALLS", "LLM FEATURES", "DASHBOARDS"];
+const marquee = ["DISCOVERY", "PRDs", "MARKETPLACES", "AI PROTOTYPES", "UNIT ECONOMICS", "FINTECH", "KPIs", "SQL", "SHIPPED", "USER INTERVIEWS", "LLM FEATURES", "GO-TO-MARKET"];
 
 export default function Home() {
   return (
@@ -20,8 +20,8 @@ export default function Home() {
       <nav className="nav">
         <a href="#top" className="logo">HR<span>.</span></a>
         <div className="nav-links">
-          <a href="#work">Work</a>
           <a href="#cases">Cases</a>
+          <a href="#work">Work</a>
           <a href="#numbers">Numbers</a>
           <a href="#about">About</a>
           <a href="#contact" className="btn btn-sm bg-pink">Say hi</a>
@@ -64,12 +64,20 @@ export default function Home() {
       </div>
 
       {/* STATS */}
-      <section className="wrap stats">
+      <section className="wrap stats stats-6">
         {stats.map((s, i) => (
-          <div key={s.label} className={`card stat bg-${["yellow", "pink", "lime", "blue"][i % 4]} ${i % 4 === 3 ? "ink-light" : ""}`}>
+          <div key={s.label} className={`card stat bg-${["yellow", "pink", "lime", "blue", "orange", "purple"][i % 6]} ${[3, 5].includes(i % 6) ? "ink-light" : ""}`}>
             <span className="stat-val mono">{s.value}</span>
             <span className="stat-lbl">{s.label}</span>
           </div>
+        ))}
+      </section>
+
+      {/* INDUSTRIES */}
+      <section className="wrap industries">
+        <span className="industries-lbl mono">Worked on or case-studied:</span>
+        {industries.map((x, i) => (
+          <span key={x} className={`sticker ${i % 2 ? "rot-r" : "rot-l"}`}>{x}</span>
         ))}
       </section>
 
@@ -93,26 +101,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WORK */}
-      <section id="work" className="wrap section">
-        <h2 className="section-title"><span className="num">02</span> Things I&apos;ve shipped</h2>
-        <p className="section-sub">Each one is written up as problem, build and impact. Filter by the skill you care about.</p>
-        <ProjectGrid projects={projects} />
-      </section>
-
       {/* CASE STUDIES */}
       <section id="cases" className="wrap section">
-        <h2 className="section-title"><span className="num">03</span> Case studies</h2>
-        <p className="section-sub">From before the AI era: personas, features, metrics and dashboards. The fundamentals are the same.</p>
+        <h2 className="section-title"><span className="num">02</span> Case studies, one per industry</h2>
+        <p className="section-sub">AI, marketplaces, energy, subscriptions and hardware. Different users, same fundamentals: personas, flows, metrics and the numbers behind them.</p>
         <div className="grid-cases">
           {caseStudies.map((c) => {
             const inner = (
               <>
                 <div className={`case-head bg-${c.color} ${["blue", "purple"].includes(c.color) ? "ink-light" : ""}`}>
-                  <span className="kicker">{c.kicker}</span>
+                  <span className="kicker">{c.industry}</span>
                   <span className="case-emoji">{c.emoji}</span>
                 </div>
-                {c.cover && <img className="case-cover" src={c.cover} alt="" loading="lazy" />}
+                {c.cover ? (
+                  <img className="case-cover" src={c.cover} alt="" loading="lazy" />
+                ) : (
+                  <div className={`case-poster bg-${c.color}`} aria-hidden>
+                    <span className="poster-emoji">{c.emoji}</span>
+                    <span className="poster-ind mono">{c.kicker}</span>
+                  </div>
+                )}
                 <div className="project-body">
                   <h3 className="case-title">{c.title}</h3>
                   <div className="hook"><b className="mono">{c.hook.value}</b> {c.hook.label}</div>
@@ -122,46 +130,37 @@ export default function Home() {
                       <li key={t}>{t}</li>
                     ))}
                   </ul>
-                  <span className="btn btn-sm bg-yellow read-more">{c.external ? "Open ↗" : "Read case →"}</span>
+                  <span className="btn btn-sm bg-yellow read-more">Read case →</span>
                 </div>
               </>
             );
-            return c.external ? (
-              <a key={c.slug} href={c.external} target="_blank" rel="noreferrer" className="card project case">{inner}</a>
-            ) : (
+            return (
               <Link key={c.slug} href={`/case/${c.slug}`} className="card project case">{inner}</Link>
             );
           })}
         </div>
       </section>
 
+      {/* WORK */}
+      <section id="work" className="wrap section">
+        <h2 className="section-title"><span className="num">03</span> Things I&apos;ve shipped</h2>
+        <p className="section-sub">Each one is written up as problem, build and impact. Filter by the skill you care about.</p>
+        <ProjectGrid projects={projects} />
+      </section>
+
       {/* NAPKIN MATH */}
       <section id="numbers" className="wrap section">
         <h2 className="section-title"><span className="num">04</span> Napkin math, live</h2>
         <p className="section-sub">
-          The ROI conversation I have with every retail ops head: <i>is digitising store checklists worth it?</i> Drag the sliders.
+          Three business models, three sets of numbers I reach for first. Pick one and drag the sliders.
         </p>
         <NapkinMath />
-      </section>
-
-      {/* FRIENDS */}
-      <section className="wrap section">
-        <h2 className="section-title"><span className="num">05</span> Friends&apos; builds</h2>
-        <p className="section-sub">Good PMs hang out with good PMs.</p>
-        <div className="grid-friends">
-          {friends.map((f) => (
-            <a key={f.title} href={f.link} target="_blank" rel="noreferrer" className="card row-card bg-purple ink-light">
-              <b>{f.title} ↗</b>
-              <span>{f.summary} · by {f.by}</span>
-            </a>
-          ))}
-        </div>
       </section>
 
       {/* ABOUT */}
       <section id="about" className="wrap section two-col">
         <div>
-          <h2 className="section-title"><span className="num">06</span> Path so far</h2>
+          <h2 className="section-title"><span className="num">05</span> Path so far</h2>
           <ol className="timeline">
             {experience.map((e) => (
               <li key={e.role + e.org} className="card">
@@ -173,7 +172,7 @@ export default function Home() {
           </ol>
         </div>
         <div>
-          <h2 className="section-title"><span className="num">07</span> Toolbox</h2>
+          <h2 className="section-title"><span className="num">06</span> Toolbox</h2>
           <ul className="toolbox">
             {toolbox.map((t, i) => (
               <li key={t} className={`sticker bg-${["yellow", "pink", "lime", "blue", "orange", "purple"][i % 6]} ${i % 2 ? "rot-r" : "rot-l"} ${["blue", "purple"].includes(["yellow", "pink", "lime", "blue", "orange", "purple"][i % 6]) ? "ink-light" : ""}`}>

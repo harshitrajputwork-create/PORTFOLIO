@@ -7,7 +7,7 @@ import { caseBodies, type Block } from "@/content/cases";
 const inkLight = (c: string) => (["blue", "purple"].includes(c) ? "ink-light" : "");
 
 export function generateStaticParams() {
-  return caseStudies.filter((c) => !c.external).map((c) => ({ slug: c.slug }));
+  return caseStudies.map((c) => ({ slug: c.slug }));
 }
 
 export const dynamicParams = false;
@@ -97,6 +97,67 @@ function Section({ b }: { b: Block }) {
           </div>
         </section>
       );
+    case "embed":
+      return (
+        <section className="cs-block">
+          <h2>{b.heading}</h2>
+          {b.note && <p className="cs-note">{b.note}</p>}
+          <div className="card embed">
+            <iframe src={b.src} title={b.title} style={{ height: b.height }} loading="lazy" allow="fullscreen; clipboard-read; clipboard-write; microphone" allowFullScreen />
+          </div>
+          <a className="btn btn-sm bg-yellow cs-open" href={b.open} target="_blank" rel="noreferrer">Open full screen ↗</a>
+        </section>
+      );
+    case "video":
+      if (!b.src) return null;
+      return (
+        <section className="cs-block">
+          <h2>{b.heading}</h2>
+          <div className="card embed">
+            {/youtube\.com|youtu\.be|vimeo\.com|tinkercad\.com|drive\.google\.com/.test(b.src) ? (
+              <iframe src={b.src} title={b.caption} className="video-frame" allowFullScreen />
+            ) : (
+              <video src={b.src} poster={b.poster} controls playsInline muted loop autoPlay className="video" />
+            )}
+          </div>
+          <p className="cs-note">{b.caption}</p>
+        </section>
+      );
+    case "code":
+      return (
+        <section className="cs-block">
+          <h2>{b.heading}</h2>
+          {b.note && <p className="cs-note">{b.note}</p>}
+          <pre className="card code"><code>{b.code}</code></pre>
+        </section>
+      );
+    case "table":
+      return (
+        <section className="cs-block">
+          <h2>{b.heading}</h2>
+          <div className="card table-wrap">
+            <table className="cs-table">
+              <thead><tr>{b.headers.map((h) => <th key={h}>{h}</th>)}</tr></thead>
+              <tbody>{b.rows.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j} className={j === r.length - 1 ? "mono" : ""}>{c}</td>)}</tr>)}</tbody>
+            </table>
+          </div>
+          {b.note && <p className="cs-note">{b.note}</p>}
+        </section>
+      );
+    case "chips":
+      return (
+        <section className="cs-block">
+          <h2>{b.heading}</h2>
+          <div className="chip-groups">
+            {b.groups.map((g) => (
+              <div key={g.label} className="card chip-group">
+                <div className={`pillar-head bg-${g.color} ${inkLight(g.color)}`}><h3>{g.label}</h3></div>
+                <ul className="chip-list">{g.items.map((i) => <li key={i}>{i}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      );
     case "images":
       return (
         <section className="cs-block">
@@ -128,7 +189,8 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         </div>
       </nav>
       <header className={`wrap cs-hero`}>
-        <span className={`sticker bg-${c.color} ${inkLight(c.color)} rot-l`}>{c.emoji} {c.kicker}</span>
+        <span className={`sticker bg-${c.color} ${inkLight(c.color)} rot-l`}>{c.emoji} {c.kicker}</span>{" "}
+        <span className="sticker bg-yellow rot-r">{c.industry}</span>
         <h1>{c.title}</h1>
         <p className="lead">{c.summary}</p>
         <div className="cs-meta">
@@ -143,9 +205,9 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           <Section key={b.heading} b={b} />
         ))}
         <div className="card contact bg-yellow cs-end">
-          <h2>Want the full deck or the .pbix?</h2>
+          <h2>Want to go deeper on this one?</h2>
           <div className="cta-row">
-            <a className="btn bg-pink" href={`mailto:${profile.email}`}>✉️ Email me</a>
+            <a className="btn bg-pink" href={`mailto:${profile.email}`}>✉️ Let&apos;s talk</a>
             <Link className="btn" href="/#cases">More cases →</Link>
           </div>
         </div>
