@@ -12,7 +12,8 @@ export const profile = {
     "I talk to the store manager, write the spec, and then use AI to build the working prototype myself, usually in the same week.",
   email: "harshitrajputwork@gmail.com",
   github: "https://github.com/harshitrajputwork-create",
-  linkedin: "https://www.linkedin.com/", // TODO: your LinkedIn URL
+  linkedin: "https://www.linkedin.com/in/harshit-rajput-9a9a69189/",
+  photo: "/harshit.jpg",
   resume: "", // TODO: link to a PDF resume (put it in /public and use "/resume.pdf")
   oldPortfolio: "https://harshit-project-portfolio.super.site/",
   location: "New Delhi, India",
@@ -188,14 +189,76 @@ export const projects: Project[] = [
   },
 ];
 
-// Case studies from the original Notion + super.site portfolio.
-// TODO: paste the titles/summaries from https://harshit-project-portfolio.super.site/
-export const classicCaseStudies: { title: string; summary: string; link?: string }[] = [
+// Case studies from the original Notion + super.site portfolio (pre-AI era).
+// Each one gets its own page at /case/<slug>.
+export type CaseStudy = {
+  slug: string;
+  title: string;
+  kicker: string;
+  color: Project["color"];
+  emoji: string;
+  summary: string;
+  tags: string[];
+  tools: string[];
+  when?: string;
+  cover?: string;
+  external?: string; // link out instead of an internal page
+  hook: { value: string; label: string };
+};
+
+export const caseStudies: CaseStudy[] = [
   {
-    title: "Pre-AI case studies",
+    slug: "kazam",
+    title: "Kazam EV: 4 features for India's EV charging app",
+    kicker: "Product case · EV / Climate",
+    color: "pink",
+    emoji: "⚡",
     summary:
-      "Product teardowns, RCA and feature case studies from my original portfolio. Moving them here soon.",
-    link: "https://harshit-project-portfolio.super.site/",
+      "Four personas, their charging pain points, and four features with mock-ups, expected impact and success metrics: demand-based price bids, community filters, SOS mode and P2P solar charging.",
+    tags: ["Personas", "Feature design", "Metrics", "Wireframes"],
+    tools: ["Miro", "PPT"],
+    cover: "/case/kazam/s5.jpg",
+    hook: { value: "28.5%", label: "CAGR of India's EV market that sizes the bet" },
+  },
+  {
+    slug: "telecom-churn",
+    title: "Why 27% of telecom customers churned",
+    kicker: "Data case · Telecom",
+    color: "yellow",
+    emoji: "📉",
+    summary:
+      "Cleaned a 7,043-customer dataset, wrote DAX measures and built a two-page Power BI dashboard. Found that month-to-month, low-tenure, fibre customers paying by e-check are the ones who leave.",
+    tags: ["DAX", "Cohorts", "Recommendations"],
+    tools: ["Power BI"],
+    when: "Dec 2021",
+    cover: "/case/churn/risk.png",
+    hook: { value: "1,869", label: "of 7,043 customers churned in a month" },
+  },
+  {
+    slug: "sector-research",
+    title: "Sector research: Entertainment, Petcare, Parking",
+    kicker: "Market research · Miro",
+    color: "blue",
+    emoji: "🗺️",
+    summary: "Mapped three consumer sectors on a Miro board: players, business models and gaps worth building for.",
+    tags: ["Market sizing", "Competitor mapping"],
+    tools: ["Miro"],
+    external: "https://harshit-project-portfolio.super.site/project/title",
+    hook: { value: "3", label: "sectors mapped" },
+  },
+  {
+    slug: "ldr",
+    title: "LDR light detection on Arduino",
+    kicker: "Hardware roots · Electronics",
+    color: "lime",
+    emoji: "🔌",
+    summary:
+      "An Arduino + 16x2 LCD system that reads two LDRs and shows light/dark states. Bit-level LCD control written in C. It's where the engineering brain comes from.",
+    tags: ["C/C++", "Arduino", "Embedded"],
+    tools: ["Tinkercad"],
+    when: "Jan 2022",
+    external: "https://harshit-project-portfolio.super.site/project/ldr-based-light-detection-with-lcd-display",
+    hook: { value: "2", label: "sensors, 4 states, 1 LCD" },
   },
 ];
 
@@ -203,13 +266,14 @@ export const classicCaseStudies: { title: string; summary: string; link?: string
 export const friends: { title: string; by: string; summary: string; link: string }[] = [
   {
     title: "MockAI: PM Interview Engine",
-    by: "Anant",
-    summary: "An AI mock-interviewer for product management interviews.", // TODO: refine
-    link: "https://app.notion.com/p/MockAI-PM-Interview-Engine-ba62b6ff95c9829ca6b5019cd9452119",
+    by: "Anant Trivedi",
+    summary:
+      "An AI interviewer for PM case interviews: 15 real cases (WhatsApp Search, Airbnb supply…), 4 difficulty levels up to MAANG, voice mode, 6-dimension rubric scoring and focused drills.",
+    link: "https://mockaipminterview.lovable.app/",
   },
   {
     title: "Anant's portfolio",
-    by: "Anant",
+    by: "Anant Trivedi",
     summary: "More PM projects & case studies.",
     link: "https://app.notion.com/p/Hi-I-m-Anant-1-15f2b6ff95c982c2aa8e81abe4c701fc",
   },
@@ -223,12 +287,22 @@ export const experience = [
     what:
       "Frontline-ops SaaS (checklists, audits, tickets, e-learning) for retail & F&B chains in India and the GCC. Own discovery → spec → rollout, plus AI tooling for implementation and sales.",
   },
-  // TODO: verify/adjust earlier roles
-  { when: "Earlier", role: "Ops & growth roles", org: "Genpact · BYJU'S · Begin · Connect", what: "Customer, sales and operations roles where I learned how businesses actually make money." },
+  {
+    when: "Before",
+    role: "Product (founding team)",
+    org: "Rewrite · early-stage startup",
+    what: "Took a product from ideation to execution, through the full build and deployment cycle.",
+  },
+  {
+    when: "Before",
+    role: "MIS",
+    org: "Genpact",
+    what: "Reporting and MIS at scale. This is where SQL, Excel and reporting discipline became second nature.",
+  },
   { when: "2019 — 2022", role: "B.Sc. Electronics", org: "SGTB Khalsa College, DU", what: "Engineering brain, business curiosity." },
 ];
 
 export const toolbox = [
   "Claude Code", "ChatGPT / GPT-4o", "Cursor", "Next.js", "Supabase", "Vercel",
-  "Python · pandas", "Streamlit", "Plotly", "SQL", "Notion", "Figma", "Jira", "Excel wizardry",
+  "Python · pandas", "Streamlit", "Plotly", "SQL", "Power BI", "Miro", "Notion", "Figma", "Jira", "Excel wizardry",
 ];
