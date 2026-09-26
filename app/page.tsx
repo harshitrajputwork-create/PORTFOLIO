@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Haptics from "@/components/Haptics";
+import HireMe from "@/components/HireMe";
 import { profile, proof, featured, moreWork, sideProduct, earlier, sideQuests, journey } from "@/content/data";
 
 const inkLight = (c: string) => (["blue", "purple"].includes(c) ? "ink-light" : "");
@@ -55,6 +56,7 @@ export default function Home() {
               {j.link && (
                 <Link className="j-link" href={j.link.href}>{j.link.label} →</Link>
               )}
+              {j.state === "next" && <HireMe className="btn btn-sm bg-yellow j-hire" label="Work with me →" />}
             </li>
           ))}
         </ol>
@@ -187,7 +189,8 @@ export default function Home() {
           <h2>Looking for a PM who knows the workflow <span className="hl bg-pink">and</span> the numbers?</h2>
           <p className="contact-mail mono">{profile.email}</p>
           <div className="cta-row">
-            <a className="btn bg-pink" href={`mailto:${profile.email}`}>Email me</a>
+            <HireMe className="btn bg-pink" label="Work with me" />
+            <a className="btn" href={`mailto:${profile.email}`}>Email me</a>
             <a className="btn" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
             <a className="btn" href={profile.resume} target="_blank" rel="noreferrer">Resume ↗</a>
             <a className="btn" href={profile.github} target="_blank" rel="noreferrer">GitHub ↗</a>
