@@ -92,6 +92,9 @@ img { max-width: 100%; }
 .photo { display: block; width: 240px; height: 300px; object-fit: cover; object-position: center 25%; border: var(--border); border-radius: 20px; box-shadow: 8px 8px 0 var(--pink); transform: rotate(2deg); }
 .photo-tag { position: absolute; left: -24px; bottom: 18px; font-size: 13px; }
 
+.hero-id { display: flex; align-items: center; gap: 14px; }
+.avatar-mobile { display: none; }
+
 /* proof */
 .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-top: 28px; }
 .proof-tile { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow); transition: transform .12s; }
@@ -306,6 +309,7 @@ img { max-width: 100%; }
 }
 @media (max-width: 600px) {
   .hero-photo { display: none; }
+  .avatar-mobile { display: block; width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: center 22%; border: var(--border); box-shadow: 4px 4px 0 var(--pink); flex-shrink: 0; }
 }
 @media (max-width: 480px) {
   .pdr div { grid-template-columns: 1fr; gap: 0; }
