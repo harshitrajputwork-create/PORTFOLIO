@@ -1,11 +1,12 @@
 import NapkinMath from "@/components/NapkinMath";
 import ProjectGrid from "@/components/ProjectGrid";
+import Link from "next/link";
 import {
   profile,
   stats,
   pillars,
   projects,
-  classicCaseStudies,
+  caseStudies,
   friends,
   experience,
   toolbox,
@@ -20,6 +21,7 @@ export default function Home() {
         <a href="#top" className="logo">HR<span>.</span></a>
         <div className="nav-links">
           <a href="#work">Work</a>
+          <a href="#cases">Cases</a>
           <a href="#numbers">Numbers</a>
           <a href="#about">About</a>
           <a href="#contact" className="btn btn-sm bg-pink">Say hi</a>
@@ -44,9 +46,9 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-art" aria-hidden>
-          <div className="blob bg-pink card">
-            <span className="mono big">{profile.tagline}</span>
-          </div>
+          <div className="blob bg-pink card" />
+          <img className="photo card" src={profile.photo} alt={profile.name} />
+          <span className="sticker bg-yellow tagline rot-l">{profile.tagline}</span>
           <div className="tile bg-yellow card rot-r"><span>🧭</span>PM</div>
           <div className="tile bg-blue card rot-l ink-light"><span>⚡</span>AI-native</div>
           <div className="tile bg-lime card rot-r"><span>🧮</span>₹ math</div>
@@ -98,30 +100,55 @@ export default function Home() {
         <ProjectGrid projects={projects} />
       </section>
 
+      {/* CASE STUDIES */}
+      <section id="cases" className="wrap section">
+        <h2 className="section-title"><span className="num">03</span> Case studies</h2>
+        <p className="section-sub">From before the AI era: personas, features, metrics and dashboards. The fundamentals are the same.</p>
+        <div className="grid-cases">
+          {caseStudies.map((c) => {
+            const inner = (
+              <>
+                <div className={`case-head bg-${c.color} ${["blue", "purple"].includes(c.color) ? "ink-light" : ""}`}>
+                  <span className="kicker">{c.kicker}</span>
+                  <span className="case-emoji">{c.emoji}</span>
+                </div>
+                {c.cover && <img className="case-cover" src={c.cover} alt="" loading="lazy" />}
+                <div className="project-body">
+                  <h3 className="case-title">{c.title}</h3>
+                  <div className="hook"><b className="mono">{c.hook.value}</b> {c.hook.label}</div>
+                  <p>{c.summary}</p>
+                  <ul className="stack">
+                    {[...c.tags, ...c.tools].map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
+                  <span className="btn btn-sm bg-yellow read-more">{c.external ? "Open ↗" : "Read case →"}</span>
+                </div>
+              </>
+            );
+            return c.external ? (
+              <a key={c.slug} href={c.external} target="_blank" rel="noreferrer" className="card project case">{inner}</a>
+            ) : (
+              <Link key={c.slug} href={`/case/${c.slug}`} className="card project case">{inner}</Link>
+            );
+          })}
+        </div>
+      </section>
+
       {/* NAPKIN MATH */}
       <section id="numbers" className="wrap section">
-        <h2 className="section-title"><span className="num">03</span> Napkin math, live</h2>
+        <h2 className="section-title"><span className="num">04</span> Napkin math, live</h2>
         <p className="section-sub">
           The ROI conversation I have with every retail ops head: <i>is digitising store checklists worth it?</i> Drag the sliders.
         </p>
         <NapkinMath />
       </section>
 
-      {/* ARCHIVE + FRIENDS */}
-      <section className="wrap section two-col">
-        <div>
-          <h2 className="section-title"><span className="num">04</span> The archive</h2>
-          <p className="section-sub">Case studies from before AI. Same fundamentals.</p>
-          {classicCaseStudies.map((c) => (
-            <a key={c.title} href={c.link} target="_blank" rel="noreferrer" className="card row-card bg-orange">
-              <b>{c.title} ↗</b>
-              <span>{c.summary}</span>
-            </a>
-          ))}
-        </div>
-        <div>
-          <h2 className="section-title"><span className="num">05</span> Friends&apos; builds</h2>
-          <p className="section-sub">Good PMs hang out with good PMs.</p>
+      {/* FRIENDS */}
+      <section className="wrap section">
+        <h2 className="section-title"><span className="num">05</span> Friends&apos; builds</h2>
+        <p className="section-sub">Good PMs hang out with good PMs.</p>
+        <div className="grid-friends">
           {friends.map((f) => (
             <a key={f.title} href={f.link} target="_blank" rel="noreferrer" className="card row-card bg-purple ink-light">
               <b>{f.title} ↗</b>
