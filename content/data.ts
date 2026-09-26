@@ -8,7 +8,7 @@ export const profile = {
   title: "Product Specialist at Taqtics",
   headline: "I turn complex problems into simple, useful products.",
   intro:
-    "I'm Harshit Rajput, a Product Specialist at Taqtics. I helped launch a two-sided marketplace at Connect, worked inside a US fintech's risk and payments operations at Genpact, and now own enterprise onboarding, automation and analytics for 25+ brands. Across all of it, I start with the user's problem, let data guide the decision, and build to test ideas.",
+    "I helped launch a two-sided marketplace at Connect, worked inside a US fintech's risk and payments operations at Genpact, and now own enterprise onboarding, automation and analytics for 25+ brands at Taqtics. Across all of it, I start with the user's problem, let data guide the decision, and build to test ideas.",
   email: "harshitrajputwork@gmail.com",
   linkedin: "https://www.linkedin.com/in/harshit-rajput-9a9a69189/",
   github: "https://github.com/harshitrajputwork-create",
@@ -178,23 +178,39 @@ export const sideQuests = [
   { title: "TripSplit", story: "Splitwise felt like too much for one trip, so I built a simpler splitter.", href: "https://tripsplit-snowy.vercel.app" },
 ];
 
-// Journey timeline, oldest first.
-export const journey = [
+// Journey timeline, oldest first. Kept short so it reads in one glance.
+export type Step = {
+  when: string;
+  org: string;
+  role: string;
+  line: string;
+  link?: { label: string; href: string };
+  state?: "now" | "next";
+};
+
+export const journey: Step[] = [
   {
-    when: "2019 – 2022",
-    title: "B.Sc. (Hons.) Electronics, University of Delhi",
-    text: "President of the college's Western Dance Society (50+ members). Represented Haryana twice at the National Energy Conservation Programme.",
-    link: { label: "A college build: Arduino light sensor", href: "/case/ldr" },
+    when: "2019–22",
+    org: "University of Delhi",
+    role: "B.Sc. Electronics",
+    line: "Led a 50+ member society; represented Haryana twice in national energy conservation.",
+    link: { label: "Arduino build", href: "/case/ldr" },
   },
-  { when: "Sep – Oct 2022", title: "BYJU'S · Business Development Intern", text: "Closed ₹50,000 in four weeks from 120+ self-sourced leads." },
+  { when: "2022", org: "BYJU'S", role: "Business Development Intern", line: "Closed ₹50,000 in 4 weeks from 120+ self-sourced leads." },
   {
-    when: "Feb 2023 – Mar 2024",
-    title: "Genpact · MIS & Fraud Analytics Associate, US fintech client",
-    text: "Worked inside the client's product and risk operations. Defined transaction anomaly signals across large payment datasets that went into their live fraud monitoring, and built Power BI and Excel reporting used across risk and ops, cutting error resolution time by 20%.",
-    tags: ["Payments & settlements", "Fraud & compliance", "Core banking", "Onboarding & identity", "Lending"],
+    when: "2023–24",
+    org: "Genpact",
+    role: "MIS & Fraud Analytics, US fintech",
+    line: "Fraud signals and risk reporting across payments, core banking, identity and lending. 20% faster error resolution.",
   },
-  { when: "Mar – Sep 2024", title: "Connect · Product Management Intern", text: "One of four on the product team that launched a services marketplace app.", link: { label: "Read the case", href: "/case/connect-marketplace" } },
-  { when: "Late 2024", title: "CAT preparation", text: "97th percentile in Quant and a strong DILR score; VARC didn't go my way. By then I knew I wanted to build products, so I went straight into product work." },
-  { when: "Apr 2025 – now", title: "Taqtics · Product Specialist", text: "Own onboarding, workflow automation, ticketing and analytics for 25+ enterprise brands, each account end to end." },
-  { when: "Next", title: "A product role where I own a problem end to end", text: "B2B, B2C or marketplaces. I care more about the problem than the label." },
+  {
+    when: "2024",
+    org: "Connect",
+    role: "Product Management Intern",
+    line: "Helped launch a services marketplace; 65% quote-to-client conversion in month one.",
+    link: { label: "Read the case", href: "/case/connect-marketplace" },
+  },
+  { when: "Late 2024", org: "CAT prep", role: "97%ile in Quant", line: "Realised I wanted to build products, not wait for an MBA." },
+  { when: "2025–now", org: "Taqtics", role: "Product Specialist", line: "Onboarding, automation and analytics for 25+ enterprise brands.", state: "now" },
+  { when: "Next", org: "Your team?", role: "Product role", line: "B2B, B2C or marketplaces. The problem matters more than the label.", state: "next" },
 ];
