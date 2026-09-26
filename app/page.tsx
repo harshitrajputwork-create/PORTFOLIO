@@ -28,7 +28,7 @@ export default function Home() {
             I turn complex <span className="hl bg-yellow">problems</span> into simple, useful <span className="hl bg-pink">products</span>.
           </h1>
           <p className="lead">
-            {profile.intro}
+            <b>{profile.name}.</b> {profile.intro}
           </p>
           <div className="cta-row">
             <a href="#work" className="btn bg-yellow">View selected work ↓</a>
@@ -41,6 +41,24 @@ export default function Home() {
           <span className="sticker bg-blue ink-light photo-tag rot-r">📍 {profile.location}</span>
         </div>
       </header>
+
+      {/* JOURNEY: right under the hero, one glance */}
+      <section id="about" className="wrap journey-wrap" aria-label="My journey">
+        <h2 className="journey-title mono">The journey so far →</h2>
+        <ol className="journey">
+          {journey.map((j) => (
+            <li key={j.org} className={j.state ?? ""}>
+              <span className="j-when mono">{j.when}</span>
+              <b className="j-org">{j.org}</b>
+              <span className="j-role">{j.role}</span>
+              <p>{j.line}</p>
+              {j.link && (
+                <Link className="j-link" href={j.link.href}>{j.link.label} →</Link>
+              )}
+            </li>
+          ))}
+        </ol>
+      </section>
 
       {/* PROOF */}
       <section className="wrap proof" aria-label="Proof points">
@@ -161,34 +179,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* JOURNEY */}
-      <section id="about" className="wrap section">
-        <h2 className="section-title">The journey so far</h2>
-        <ol className="journey">
-          {journey.map((j, i) => (
-            <li key={j.title} className={i === journey.length - 1 ? "next" : i === journey.length - 2 ? "now" : ""}>
-              <span className="j-when mono">{j.when}</span>
-              <b>{j.title}</b>
-              <p>{j.text}</p>
-              {j.tags && (
-                <ul className="j-tags">
-                  {j.tags.map((t) => (
-                    <li key={t}>{t}</li>
-                  ))}
-                </ul>
-              )}
-              {j.link && (
-                j.link.href.startsWith("/") ? (
-                  <Link className="text-link" href={j.link.href}>{j.link.label} →</Link>
-                ) : (
-                  <a className="text-link" href={j.link.href}>{j.link.label} →</a>
-                )
-              )}
-            </li>
-          ))}
-        </ol>
       </section>
 
       {/* CONTACT */}
