@@ -3,7 +3,9 @@
 A pop-style portfolio built with Next.js. It's made to show three things: **PM fundamentals**, **AI-native building** and **street-smart numbers**.
 
 ## Edit content
-All text, projects, stats and links live in **`content/data.ts`**. Search it for `TODO` to find what still needs your real numbers and links.
+- **`content/data.ts`**: homepage content (hero, proof points, selected work, more work, side product, side quests, journey).
+- **`content/cases.ts`**: case-study pages (`caseMeta` for the header and facts, `caseBodies` for the sections).
+- **`public/Harshit-Rajput-Resume.pdf`**: the resume linked from the site. Replace the file to update it.
 
 ## Run locally
 ```bash
