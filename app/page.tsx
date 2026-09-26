@@ -20,7 +20,10 @@ export default function Home() {
       {/* HERO */}
       <header id="top" className="hero wrap">
         <div className="hero-copy">
-          <span className="sticker bg-lime rot-l">{profile.title}</span>
+          <div className="hero-id">
+            <img className="avatar-mobile" src={profile.photo} alt={profile.name} />
+            <span className="sticker bg-lime rot-l">{profile.title}</span>
+          </div>
           <h1>
             I turn complex <span className="hl bg-yellow">problems</span> into simple, useful <span className="hl bg-pink">products</span>.
           </h1>
