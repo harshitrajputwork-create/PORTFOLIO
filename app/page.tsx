@@ -1,18 +1,7 @@
-import NapkinMath from "@/components/NapkinMath";
-import ProjectGrid from "@/components/ProjectGrid";
 import Link from "next/link";
-import {
-  profile,
-  stats,
-  pillars,
-  projects,
-  caseStudies,
-  industries,
-  experience,
-  toolbox,
-} from "@/content/data";
+import { profile, proof, featured, moreWork, sideProduct, earlier, sideQuests, journey } from "@/content/data";
 
-const marquee = ["DISCOVERY", "PRDs", "MARKETPLACES", "AI PROTOTYPES", "UNIT ECONOMICS", "FINTECH", "KPIs", "SQL", "SHIPPED", "USER INTERVIEWS", "LLM FEATURES", "GO-TO-MARKET"];
+const inkLight = (c: string) => (["blue", "purple"].includes(c) ? "ink-light" : "");
 
 export default function Home() {
   return (
@@ -20,10 +9,9 @@ export default function Home() {
       <nav className="nav">
         <a href="#top" className="logo">HR<span>.</span></a>
         <div className="nav-links">
-          <a href="#cases">Cases</a>
           <a href="#work">Work</a>
-          <a href="#numbers">Numbers</a>
           <a href="#about">About</a>
+          <a href={profile.resume} target="_blank" rel="noreferrer">Resume</a>
           <a href="#contact" className="btn btn-sm bg-pink">Say hi</a>
         </div>
       </nav>
@@ -31,173 +19,170 @@ export default function Home() {
       {/* HERO */}
       <header id="top" className="hero wrap">
         <div className="hero-copy">
-          <span className="sticker bg-lime rot-l">👋 {profile.location}</span>
+          <span className="sticker bg-lime rot-l">{profile.title}</span>
           <h1>
-            {profile.name.split(" ")[0]} builds <span className="hl bg-yellow">products</span>{" "}
-            with <span className="hl bg-pink">AI</span> &amp; <span className="nowrap"><span className="hl bg-blue ink-light">numbers</span>.</span>
+            I turn complex business <span className="hl bg-yellow">workflows</span> into simpler <span className="hl bg-pink">software</span>.
           </h1>
           <p className="lead">
-            <b>{profile.role}.</b> {profile.intro}
+            <b>{profile.name}.</b> {profile.intro}
           </p>
           <div className="cta-row">
-            <a href="#work" className="btn bg-yellow">See the work ↓</a>
-            <a href={profile.github} className="btn" target="_blank" rel="noreferrer">GitHub ↗</a>
-            {profile.resume && <a href={profile.resume} className="btn">Resume ↗</a>}
+            <a href="#work" className="btn bg-yellow">View selected work ↓</a>
+            <a href={profile.resume} className="btn" target="_blank" rel="noreferrer">Resume (PDF) ↗</a>
+            <a href={profile.linkedin} className="btn" target="_blank" rel="noreferrer">LinkedIn ↗</a>
           </div>
         </div>
-        <div className="hero-art" aria-hidden>
-          <div className="blob bg-pink card" />
-          <img className="photo card" src={profile.photo} alt={profile.name} />
-          <span className="sticker bg-yellow tagline rot-l">{profile.tagline}</span>
-          <div className="tile bg-yellow card rot-r"><span>🧭</span>PM</div>
-          <div className="tile bg-blue card rot-l ink-light"><span>⚡</span>AI-native</div>
-          <div className="tile bg-lime card rot-r"><span>🧮</span>₹ math</div>
+        <div className="hero-photo">
+          <img className="photo" src={profile.photo} alt={profile.name} />
+          <span className="sticker bg-blue ink-light photo-tag rot-r">📍 {profile.location}</span>
         </div>
       </header>
 
-      <div className="marquee" aria-hidden>
-        <div className="marquee-track">
-          {[...marquee, ...marquee].map((m, i) => (
-            <span key={i}>{m} ✦</span>
-          ))}
-        </div>
-      </div>
-
-      {/* STATS */}
-      <section className="wrap stats stats-6">
-        {stats.map((s, i) => (
-          <div key={s.label} className={`card stat bg-${["yellow", "pink", "lime", "blue", "orange", "purple"][i % 6]} ${[3, 5].includes(i % 6) ? "ink-light" : ""}`}>
-            <span className="stat-val mono">{s.value}</span>
-            <span className="stat-lbl">{s.label}</span>
-          </div>
+      {/* PROOF */}
+      <section className="wrap proof" aria-label="Proof points">
+        {proof.map((p) => (
+          <a key={p.label} href={p.link} className={`proof-tile bg-${p.color}`}>
+            <span className="proof-val mono">{p.value}</span>
+            <b>{p.label}</b>
+            <span className="proof-ctx">{p.context}</span>
+            <span className="proof-more">How →</span>
+          </a>
         ))}
       </section>
 
-      {/* INDUSTRIES */}
-      <section className="wrap industries">
-        <span className="industries-lbl mono">Worked on or case-studied:</span>
-        {industries.map((x, i) => (
-          <span key={x} className={`sticker ${i % 2 ? "rot-r" : "rot-l"}`}>{x}</span>
-        ))}
-      </section>
-
-      {/* PILLARS */}
-      <section className="wrap section">
-        <h2 className="section-title"><span className="num">01</span> What I bring</h2>
-        <div className="pillars">
-          {pillars.map((p) => (
-            <div key={p.key} className="card pillar">
-              <div className={`pillar-head bg-${p.color} ${p.color === "blue" ? "ink-light" : ""}`}>
-                <span className="pillar-emoji">{p.emoji}</span>
-                <h3>{p.title}</h3>
-              </div>
-              <ul>
-                {p.points.map((pt) => (
-                  <li key={pt}>{pt}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CASE STUDIES */}
-      <section id="cases" className="wrap section">
-        <h2 className="section-title"><span className="num">02</span> Case studies, one per industry</h2>
-        <p className="section-sub">AI, marketplaces, energy, subscriptions and hardware. Different users, same fundamentals: personas, flows, metrics and the numbers behind them.</p>
-        <div className="grid-cases">
-          {caseStudies.map((c) => {
-            const inner = (
-              <>
-                <div className={`case-head bg-${c.color} ${["blue", "purple"].includes(c.color) ? "ink-light" : ""}`}>
-                  <span className="kicker">{c.industry}</span>
-                  <span className="case-emoji">{c.emoji}</span>
-                </div>
-                {c.cover ? (
-                  <img className="case-cover" src={c.cover} alt="" loading="lazy" />
-                ) : (
-                  <div className={`case-poster bg-${c.color}`} aria-hidden>
-                    <span className="poster-emoji">{c.emoji}</span>
-                    <span className="poster-ind mono">{c.kicker}</span>
-                  </div>
-                )}
-                <div className="project-body">
-                  <h3 className="case-title">{c.title}</h3>
-                  <div className="hook"><b className="mono">{c.hook.value}</b> {c.hook.label}</div>
-                  <p>{c.summary}</p>
-                  <ul className="stack">
-                    {[...c.tags, ...c.tools].map((t) => (
-                      <li key={t}>{t}</li>
-                    ))}
-                  </ul>
-                  <span className="btn btn-sm bg-yellow read-more">Read case →</span>
-                </div>
-              </>
-            );
-            return (
-              <Link key={c.slug} href={`/case/${c.slug}`} className="card project case">{inner}</Link>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* WORK */}
+      {/* SELECTED WORK */}
       <section id="work" className="wrap section">
-        <h2 className="section-title"><span className="num">03</span> Things I&apos;ve shipped</h2>
-        <p className="section-sub">Each one is written up as problem, build and impact. Filter by the skill you care about.</p>
-        <ProjectGrid projects={projects} />
+        <h2 className="section-title">Selected work</h2>
+        <p className="section-sub">Three problems I owned: why they mattered, what I chose, and what happened.</p>
+        <div className="featured">
+          {featured.map((f) => (
+            <Link key={f.slug} href={`/case/${f.slug}`} className="feat">
+              <div className={`feat-visual bg-${f.color} ${inkLight(f.color)}`} aria-hidden>
+                <ol className="mini-flow">
+                  {f.flow.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ol>
+              </div>
+              <div className="feat-body">
+                <span className="kicker">{f.kicker}</span>
+                <h3>{f.title}</h3>
+                <span className="feat-meta">{f.where} · {f.when}</span>
+                <dl className="pdr">
+                  <div><dt>Problem</dt><dd>{f.problem}</dd></div>
+                  <div><dt>Decision</dt><dd>{f.decision}</dd></div>
+                  <div><dt>Result</dt><dd>{f.result}</dd></div>
+                </dl>
+                <span className="btn btn-sm bg-yellow read-more">Read the case →</span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </section>
 
-      {/* NAPKIN MATH */}
-      <section id="numbers" className="wrap section">
-        <h2 className="section-title"><span className="num">04</span> Napkin math, live</h2>
-        <p className="section-sub">
-          Three business models, three sets of numbers I reach for first. Pick one and drag the sliders.
-        </p>
-        <NapkinMath />
+      {/* MORE WORK */}
+      <section id="more-work" className="wrap section section-tight">
+        <h2 className="section-title small">More from my work at Taqtics</h2>
+        <div className="more-grid">
+          {moreWork.map((w) => (
+            <article key={w.title} className="more">
+              <span className="kicker">{w.where}</span>
+              <h3>{w.title}</h3>
+              <p><b>Problem.</b> {w.problem}</p>
+              <p><b>What I did.</b> {w.what}</p>
+              <p className="more-result"><b>Result.</b> {w.result}</p>
+              {w.link && (
+                <a className="text-link" href={w.link.href} target="_blank" rel="noreferrer">{w.link.label} ↗</a>
+              )}
+            </article>
+          ))}
+        </div>
       </section>
 
-      {/* ABOUT */}
-      <section id="about" className="wrap section two-col">
+      {/* SIDE PRODUCT */}
+      <section className="wrap section section-tight">
+        <h2 className="section-title small">Side product</h2>
+        <div className="side-product">
+          <div className="sp-body">
+            <h3>{sideProduct.title}</h3>
+            <p>{sideProduct.why}</p>
+            <p className="muted">{sideProduct.what}</p>
+            <div className="cta-row">
+              <Link href={`/case/${sideProduct.slug}`} className="btn btn-sm bg-yellow">How I built it →</Link>
+              <a href={sideProduct.link} className="btn btn-sm" target="_blank" rel="noreferrer">Try it live ↗</a>
+            </div>
+          </div>
+          <div className="sp-visual bg-purple ink-light" aria-hidden>
+            <span className="mono">Clarify → Structure → Deep dive → Recommend</span>
+            <b>6 skills scored</b>
+          </div>
+        </div>
+      </section>
+
+      {/* EARLIER + SIDE QUESTS */}
+      <section className="wrap section section-tight two-col">
         <div>
-          <h2 className="section-title"><span className="num">05</span> Path so far</h2>
-          <ol className="timeline">
-            {experience.map((e) => (
-              <li key={e.role + e.org} className="card">
-                <span className="mono when">{e.when}</span>
-                <b>{e.role}</b> · {e.org}
-                <p>{e.what}</p>
-              </li>
+          <h2 className="section-title small">Earlier case studies</h2>
+          <div className="list-links">
+            {earlier.map((e) => (
+              <Link key={e.slug} href={`/case/${e.slug}`} className="list-link">
+                <span className="kicker">{e.tag}</span>
+                <b>{e.title} →</b>
+                <span className="muted">{e.note}</span>
+              </Link>
             ))}
-          </ol>
+          </div>
         </div>
         <div>
-          <h2 className="section-title"><span className="num">06</span> Toolbox</h2>
-          <ul className="toolbox">
-            {toolbox.map((t, i) => (
-              <li key={t} className={`sticker bg-${["yellow", "pink", "lime", "blue", "orange", "purple"][i % 6]} ${i % 2 ? "rot-r" : "rot-l"} ${["blue", "purple"].includes(["yellow", "pink", "lime", "blue", "orange", "purple"][i % 6]) ? "ink-light" : ""}`}>
-                {t}
-              </li>
+          <h2 className="section-title small">Side quests</h2>
+          <p className="section-sub small-sub">Small builds for friends, and one for myself.</p>
+          <div className="quests">
+            {sideQuests.map((q) => (
+              <a key={q.title} href={q.href} target="_blank" rel="noreferrer" className="quest">
+                <b>{q.title} ↗</b>
+                <span>{q.story}</span>
+              </a>
             ))}
-          </ul>
+          </div>
         </div>
+      </section>
+
+      {/* JOURNEY */}
+      <section id="about" className="wrap section">
+        <h2 className="section-title">The journey so far</h2>
+        <ol className="journey">
+          {journey.map((j, i) => (
+            <li key={j.title} className={i === journey.length - 1 ? "next" : i === journey.length - 2 ? "now" : ""}>
+              <span className="j-when mono">{j.when}</span>
+              <b>{j.title}</b>
+              <p>{j.text}</p>
+              {j.link && (
+                j.link.href.startsWith("/") ? (
+                  <Link className="text-link" href={j.link.href}>{j.link.label} →</Link>
+                ) : (
+                  <a className="text-link" href={j.link.href}>{j.link.label} →</a>
+                )
+              )}
+            </li>
+          ))}
+        </ol>
       </section>
 
       {/* CONTACT */}
       <section id="contact" className="wrap section">
-        <div className="card contact bg-yellow">
-          <h2>Hiring a PM who can also <span className="hl bg-pink">build the prototype</span>?</h2>
+        <div className="contact bg-yellow">
+          <h2>Looking for a PM who knows the workflow <span className="hl bg-pink">and</span> the numbers?</h2>
+          <p className="contact-mail mono">{profile.email}</p>
           <div className="cta-row">
-            <a className="btn bg-pink" href={`mailto:${profile.email}`}>✉️ {profile.email}</a>
+            <a className="btn bg-pink" href={`mailto:${profile.email}`}>Email me</a>
             <a className="btn" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a className="btn" href={profile.resume} target="_blank" rel="noreferrer">Resume ↗</a>
             <a className="btn" href={profile.github} target="_blank" rel="noreferrer">GitHub ↗</a>
           </div>
         </div>
       </section>
 
-      <footer className="wrap footer">
-        Built with Next.js + Claude Code · © {new Date().getFullYear()} {profile.name}
-      </footer>
+      <footer className="wrap footer">© {new Date().getFullYear()} {profile.name} · Built with Next.js and Claude Code</footer>
     </main>
   );
 }
