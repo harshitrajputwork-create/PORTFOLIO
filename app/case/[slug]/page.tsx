@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { profile } from "@/content/data";
 import { caseBodies, caseMeta, type Block } from "@/content/cases";
+import Haptics from "@/components/Haptics";
 
 const inkLight = (c: string) => (["blue", "purple"].includes(c) ? "ink-light" : "");
 const verdictLabel = { chosen: "Chosen", rejected: "Ruled out", later: "Later" } as const;
@@ -206,7 +207,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
   return (
     <main className="case-page">
       <nav className="nav">
-        <Link href="/" className="logo">HR<span>.</span></Link>
+        <Link href="/" className="logo">Harshit Rajput<span>.</span></Link>
         <div className="nav-links">
           <Link href="/#work" className="btn btn-sm">← All work</Link>
         </div>
@@ -247,6 +248,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         </div>
       </div>
       <footer className="cs-wrap footer">© {new Date().getFullYear()} {profile.name}</footer>
+      <Haptics />
     </main>
   );
 }

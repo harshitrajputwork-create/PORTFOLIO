@@ -6,9 +6,9 @@
 export const profile = {
   name: "Harshit Rajput",
   title: "Product Specialist at Taqtics",
-  headline: "I turn complex business workflows into simpler software.",
+  headline: "I turn complex problems into simple, useful products.",
   intro:
-    "At Taqtics I own discovery to delivery across onboarding, workflow automation and analytics for 25+ enterprise brands. Before that, I helped launch a two-sided marketplace at Connect.",
+    "I'm Harshit Rajput, a Product Specialist at Taqtics. I helped launch a two-sided marketplace at Connect, worked inside a US fintech's risk and payments operations at Genpact, and now own enterprise onboarding, automation and analytics for 25+ brands. Across all of it, I start with the user's problem, let data guide the decision, and build to test ideas.",
   email: "harshitrajputwork@gmail.com",
   linkedin: "https://www.linkedin.com/in/harshit-rajput-9a9a69189/",
   github: "https://github.com/harshitrajputwork-create",
@@ -53,6 +53,7 @@ export type Featured = {
   when: string;
   color: Color;
   flow: string[]; // mini visual on the card
+  embed?: { src: string; open: string; label: string }; // replaces the mini visual
   problem: string;
   decision: string;
   result: string;
@@ -91,6 +92,11 @@ export const featured: Featured[] = [
     when: "2024",
     color: "blue",
     flow: ["4 verticals", "Pick 2", "Few vendors", "Trust → growth"],
+    embed: {
+      src: "https://miro.com/app/live-embed/uXjVLvFBvoE=/?share_link_id=429930558861&embedId=592354660804&embedSource=oembed&embedMode=view_only_without_ui",
+      open: "https://miro.com/app/board/uXjVLvFBvoE=/",
+      label: "Our exploration board from Connect. Drag and zoom inside it.",
+    },
     problem: "A startup spread across home services, pet care, entertainment and construction, with no traction in any of them.",
     decision: "We focused on home services and construction, where vendors were easy to bring on and services were easy to list, and piloted with a few vendors.",
     result: "52 of 80 vendor quotes were accepted by clients in the first month (65%).",
@@ -181,7 +187,12 @@ export const journey = [
     link: { label: "A college build: Arduino light sensor", href: "/case/ldr" },
   },
   { when: "Sep – Oct 2022", title: "BYJU'S · Business Development Intern", text: "Closed ₹50,000 in four weeks from 120+ self-sourced leads." },
-  { when: "Feb 2023 – Mar 2024", title: "Genpact · MIS & Fraud Analytics", text: "Found anomaly signals in a US fintech client's transaction data that went into ongoing fraud monitoring." },
+  {
+    when: "Feb 2023 – Mar 2024",
+    title: "Genpact · MIS & Fraud Analytics Associate, US fintech client",
+    text: "Worked inside the client's product and risk operations. Defined transaction anomaly signals across large payment datasets that went into their live fraud monitoring, and built Power BI and Excel reporting used across risk and ops, cutting error resolution time by 20%.",
+    tags: ["Payments & settlements", "Fraud & compliance", "Core banking", "Onboarding & identity", "Lending"],
+  },
   { when: "Mar – Sep 2024", title: "Connect · Product Management Intern", text: "One of four on the product team that launched a services marketplace app.", link: { label: "Read the case", href: "/case/connect-marketplace" } },
   { when: "Late 2024", title: "CAT preparation", text: "97th percentile in Quant and a strong DILR score; VARC didn't go my way. By then I knew I wanted to build products, so I went straight into product work." },
   { when: "Apr 2025 – now", title: "Taqtics · Product Specialist", text: "Own onboarding, workflow automation, ticketing and analytics for 25+ enterprise brands, each account end to end." },

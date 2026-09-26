@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Haptics from "@/components/Haptics";
 import { profile, proof, featured, moreWork, sideProduct, earlier, sideQuests, journey } from "@/content/data";
 
 const inkLight = (c: string) => (["blue", "purple"].includes(c) ? "ink-light" : "");
@@ -7,7 +8,7 @@ export default function Home() {
   return (
     <main>
       <nav className="nav">
-        <a href="#top" className="logo">HR<span>.</span></a>
+        <a href="#top" className="logo">Harshit Rajput<span>.</span></a>
         <div className="nav-links">
           <a href="#work">Work</a>
           <a href="#about">About</a>
@@ -21,10 +22,10 @@ export default function Home() {
         <div className="hero-copy">
           <span className="sticker bg-lime rot-l">{profile.title}</span>
           <h1>
-            I turn complex business <span className="hl bg-yellow">workflows</span> into simpler <span className="hl bg-pink">software</span>.
+            I turn complex <span className="hl bg-yellow">problems</span> into simple, useful <span className="hl bg-pink">products</span>.
           </h1>
           <p className="lead">
-            <b>{profile.name}.</b> {profile.intro}
+            {profile.intro}
           </p>
           <div className="cta-row">
             <a href="#work" className="btn bg-yellow">View selected work ↓</a>
@@ -56,15 +57,25 @@ export default function Home() {
         <p className="section-sub">Three problems I owned: why they mattered, what I chose, and what happened.</p>
         <div className="featured">
           {featured.map((f) => (
-            <Link key={f.slug} href={`/case/${f.slug}`} className="feat">
-              <div className={`feat-visual bg-${f.color} ${inkLight(f.color)}`} aria-hidden>
-                <ol className="mini-flow">
-                  {f.flow.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ol>
-              </div>
-              <div className="feat-body">
+            <article key={f.slug} className={`feat ${f.embed ? "feat-embed" : ""}`}>
+              {f.embed ? (
+                <div className={`feat-visual feat-board bg-${f.color} ${inkLight(f.color)}`}>
+                  <iframe src={f.embed.src} title={`${f.title}: Miro board`} loading="lazy" allowFullScreen />
+                  <p className="board-cap">
+                    {f.embed.label}{" "}
+                    <a href={f.embed.open} target="_blank" rel="noreferrer">Open in Miro ↗</a>
+                  </p>
+                </div>
+              ) : (
+                <Link href={`/case/${f.slug}`} className={`feat-visual bg-${f.color} ${inkLight(f.color)}`} aria-hidden tabIndex={-1}>
+                  <ol className="mini-flow">
+                    {f.flow.map((st) => (
+                      <li key={st}>{st}</li>
+                    ))}
+                  </ol>
+                </Link>
+              )}
+              <Link href={`/case/${f.slug}`} className="feat-body">
                 <span className="kicker">{f.kicker}</span>
                 <h3>{f.title}</h3>
                 <span className="feat-meta">{f.where} · {f.when}</span>
@@ -74,8 +85,8 @@ export default function Home() {
                   <div><dt>Result</dt><dd>{f.result}</dd></div>
                 </dl>
                 <span className="btn btn-sm bg-yellow read-more">Read the case →</span>
-              </div>
-            </Link>
+              </Link>
+            </article>
           ))}
         </div>
       </section>
@@ -129,6 +140,7 @@ export default function Home() {
                 <span className="kicker">{e.tag}</span>
                 <b>{e.title} →</b>
                 <span className="muted">{e.note}</span>
+                <span className="cue">Open the case →</span>
               </Link>
             ))}
           </div>
@@ -141,6 +153,7 @@ export default function Home() {
               <a key={q.title} href={q.href} target="_blank" rel="noreferrer" className="quest">
                 <b>{q.title} ↗</b>
                 <span>{q.story}</span>
+                <span className="cue">{q.href.includes("github.com") ? "See the code ↗" : "Visit the site ↗"}</span>
               </a>
             ))}
           </div>
@@ -156,6 +169,13 @@ export default function Home() {
               <span className="j-when mono">{j.when}</span>
               <b>{j.title}</b>
               <p>{j.text}</p>
+              {j.tags && (
+                <ul className="j-tags">
+                  {j.tags.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              )}
               {j.link && (
                 j.link.href.startsWith("/") ? (
                   <Link className="text-link" href={j.link.href}>{j.link.label} →</Link>
@@ -183,6 +203,14 @@ export default function Home() {
       </section>
 
       <footer className="wrap footer">© {new Date().getFullYear()} {profile.name} · Built with Next.js and Claude Code</footer>
+
+      <nav className="mobile-bar" aria-label="Quick actions">
+        <a href="#work">Work</a>
+        <a href={profile.resume} target="_blank" rel="noreferrer">Resume</a>
+        <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="#contact" className="mb-cta">Say hi</a>
+      </nav>
+      <Haptics />
     </main>
   );
 }
