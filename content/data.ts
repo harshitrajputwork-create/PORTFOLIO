@@ -8,7 +8,7 @@ export const profile = {
   title: "Product Specialist at Taqtics",
   headline: "I turn complex problems into simple, useful products.",
   intro:
-    "I helped launch a two-sided marketplace at Connect, worked inside a US fintech's risk and payments operations at Genpact, and now own enterprise onboarding, automation and analytics for 25+ brands at Taqtics. Across all of it, I start with the user's problem, let data guide the decision, and build to test ideas.",
+    "I helped launch a two-sided marketplace at Connect, worked inside a US fintech's risk and payments operations at Genpact, and now drive product discovery, prioritisation and delivery at Taqtics, turning customer problems into features used by 25+ enterprise brands. Across all of it, I start with the user's problem, let data guide the decision, and build to test ideas.",
   email: "harshitrajputwork@gmail.com",
   linkedin: "https://www.linkedin.com/in/harshit-rajput-9a9a69189/",
   github: "https://github.com/harshitrajputwork-create",
@@ -210,7 +210,7 @@ export const journey: Step[] = [
     line: "Helped launch a services marketplace; 65% quote-to-client conversion in month one.",
     link: { label: "Read the case", href: "/case/connect-marketplace" },
   },
-  { when: "Late 2024", org: "CAT prep", role: "97%ile in Quant", line: "Realised I wanted to build products, not wait for an MBA." },
-  { when: "2025–now", org: "Taqtics", role: "Product Specialist", line: "Onboarding, automation and analytics for 25+ enterprise brands.", state: "now" },
+  { when: "Late 2024", org: "CAT prep", role: "97%ile in Quant, strong DILR", line: "VARC didn't go my way. By then I knew I wanted to build products, so I went straight into product work." },
+  { when: "2025–now", org: "Taqtics", role: "Product Specialist", line: "Discovery, prioritisation and delivery for 25+ enterprise brands.", state: "now" },
   { when: "Next", org: "Your team?", role: "Product role", line: "B2B, B2C or marketplaces. The problem matters more than the label.", state: "next" },
 ];
