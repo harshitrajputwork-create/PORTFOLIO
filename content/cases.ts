@@ -272,7 +272,7 @@ export const caseBodies: Record<string, Block[]> = {
     {
       kind: "embed",
       heading: "The exploration board",
-      src: "https://miro.com/app/live-embed/uXjVLvFBvoE=/?share_link_id=429930558861&embedId=592354660804&embedSource=oembed&embedMode=view_only_without_ui",
+      src: "https://miro.com/app/live-embed/uXjVLvFBvoE=/?share_link_id=429930558861&embedId=592354660804&embedSource=oembed&embedMode=view_only_without_ui&moveToViewport=-82000,-306000,128000,74000",
       title: "Connect sector exploration Miro board",
       height: 560,
       open: "https://miro.com/app/board/uXjVLvFBvoE=/",
