@@ -83,7 +83,7 @@ export default function Home() {
             <article key={f.slug} className={`feat ${f.embed ? "feat-embed" : ""}`}>
               {f.embed ? (
                 <div className={`feat-visual feat-board bg-${f.color} ${inkLight(f.color)}`}>
-                  <iframe src={f.embed.src} title={`${f.title}: Miro board`} loading="lazy" allowFullScreen />
+                  <iframe src={f.embed.src} title={`${f.title}: Miro board`} loading="eager" allowFullScreen />
                   <p className="board-cap">
                     {f.embed.label}{" "}
                     <a href={f.embed.open} target="_blank" rel="noreferrer">Open in Miro ↗</a>
