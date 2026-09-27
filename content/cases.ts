@@ -129,6 +129,13 @@ export const caseBodies: Record<string, Block[]> = {
 
   "ai-configuration": [
     {
+      kind: "video",
+      heading: "See it in action",
+      src: "/case/ai-config/demo.mp4",
+      poster: "/case/ai-config/poster.jpg",
+      caption: "The Form Builder I built: paste or upload a client's checklist, generate, then edit or download the JSON that goes into Taqtics.",
+    },
+    {
       kind: "text",
       heading: "The problem",
       body:

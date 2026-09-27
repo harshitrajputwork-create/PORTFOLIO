@@ -80,8 +80,13 @@ export default function Home() {
         <p className="section-sub">Three problems I owned: why they mattered, what I chose, and what happened.</p>
         <div className="featured">
           {featured.map((f) => (
-            <article key={f.slug} className={`feat ${f.embed ? "feat-embed" : ""}`}>
-              {f.embed ? (
+            <article key={f.slug} className={`feat ${f.embed ? "feat-embed" : ""} ${f.video ? "feat-video" : ""}`}>
+              {f.video ? (
+                <div className={`feat-visual feat-demo bg-${f.color}`}>
+                  <video src={f.video.src} poster={f.video.poster} autoPlay muted loop playsInline preload="auto" aria-label={f.video.label} />
+                  <p className="board-cap">{f.video.label}</p>
+                </div>
+              ) : f.embed ? (
                 <div className={`feat-visual feat-board bg-${f.color} ${inkLight(f.color)}`}>
                   <iframe src={f.embed.src} title={`${f.title}: Miro board`} loading="eager" allowFullScreen />
                   <p className="board-cap">

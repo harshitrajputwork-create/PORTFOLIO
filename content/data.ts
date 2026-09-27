@@ -54,6 +54,7 @@ export type Featured = {
   color: Color;
   flow: string[]; // mini visual on the card
   embed?: { src: string; open: string; label: string }; // replaces the mini visual
+  video?: { src: string; poster: string; label: string }; // full-width demo on top of the card
   problem: string;
   decision: string;
   result: string;
@@ -68,6 +69,11 @@ export const featured: Featured[] = [
     when: "2025",
     color: "yellow",
     flow: ["Client SOP", "AI", "Form JSON", "Live checklist"],
+    video: {
+      src: "/case/ai-config/demo.mp4",
+      poster: "/case/ai-config/poster.jpg",
+      label: "The internal tool I built: a client's store-opening checklist goes in, a ready-to-upload form comes out.",
+    },
     problem: "Every client checklist was configured by hand. The team managed 3–4 a day, so go-lives waited on setup.",
     decision: "The product already stored forms as JSON. I got engineering to add a JSON upload and built an AI tool that turns an SOP into that JSON.",
     result: "About 30 seconds per checklist. 15+ enterprise accounts went live without custom implementation.",

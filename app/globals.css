@@ -209,6 +209,11 @@ img { max-width: 100%; }
 .feat-embed { grid-template-columns: 420px 1fr; }
 .feat-body { color: inherit; }
 
+/* featured card with a demo video across the top */
+.feat-video { grid-template-columns: 1fr; }
+.feat-demo { flex-direction: column; align-items: stretch; gap: 10px; padding: 18px; border-right: 0; border-bottom: var(--border); }
+.feat-demo video { display: block; width: 100%; aspect-ratio: 21 / 9; object-fit: cover; background: #fff; border: var(--thin); border-radius: 10px; }
+
 /* "you can click this" cues */
 .cue { margin-top: 6px; font: 700 12px var(--mono); color: var(--ink); display: inline-flex; align-self: flex-start; gap: 6px; padding: 3px 9px; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--yellow); }
 .quest .cue { color: var(--ink); }
