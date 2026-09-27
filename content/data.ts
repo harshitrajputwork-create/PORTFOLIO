@@ -93,7 +93,7 @@ export const featured: Featured[] = [
     color: "blue",
     flow: ["4 verticals", "Pick 2", "Few vendors", "Trust → growth"],
     embed: {
-      src: "https://miro.com/app/live-embed/uXjVLvFBvoE=/?share_link_id=429930558861&embedId=592354660804&embedSource=oembed&embedMode=view_only_without_ui&moveToViewport=-82000,-306000,128000,74000",
+      src: "https://miro.com/app/live-embed/uXjVLvFBvoE=/?share_link_id=429930558861&embedId=592354660804&embedSource=oembed&embedMode=view_only_without_ui&moveToWidget=3458764614283802772",
       open: "https://miro.com/app/board/uXjVLvFBvoE=/",
       label: "Our exploration board from Connect. Drag and zoom inside it.",
     },
