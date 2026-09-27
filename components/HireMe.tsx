@@ -9,7 +9,7 @@ const ENDPOINT = "https://formsubmit.co/ajax/harshitrajputwork@gmail.com";
 const EMAIL = "harshitrajputwork@gmail.com";
 
 type Status = "idle" | "sending" | "sent" | "error";
-const REASONS = ["Full-time PM role", "Freelance product project", "Product advice or a quick consult", "Something else"];
+const REASONS = ["Full-time PM role", "Freelance product project", "Something else"];
 
 export default function HireMe({ label = "Work with me", className = "btn bg-yellow" }: { label?: string; className?: string }) {
   const dialog = useRef<HTMLDialogElement>(null);
