@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Haptics from "@/components/Haptics";
 import HireMe from "@/components/HireMe";
+import MiroEmbed from "@/components/MiroEmbed";
 import { profile, proof, featured, moreWork, sideProduct, earlier, sideQuests, journey } from "@/content/data";
 
 const inkLight = (c: string) => (["blue", "purple"].includes(c) ? "ink-light" : "");
@@ -80,7 +81,7 @@ export default function Home() {
         <p className="section-sub">Three problems I owned: why they mattered, what I chose, and what happened.</p>
         <div className="featured">
           {featured.map((f) => (
-            <article key={f.slug} className={`feat ${f.embed ? "feat-embed" : ""} ${f.video ? "feat-video" : ""}`}>
+            <article key={f.slug} className={`feat ${f.embed || f.video ? "feat-embed" : ""}`}>
               {f.video ? (
                 <div className={`feat-visual feat-demo bg-${f.color}`}>
                   <video src={f.video.src} poster={f.video.poster} autoPlay muted loop playsInline preload="auto" aria-label={f.video.label} />
@@ -88,7 +89,7 @@ export default function Home() {
                 </div>
               ) : f.embed ? (
                 <div className={`feat-visual feat-board bg-${f.color} ${inkLight(f.color)}`}>
-                  <iframe src={f.embed.src} title={`${f.title}: Miro board`} loading="eager" allowFullScreen />
+                  <MiroEmbed src={f.embed.src} preview="/case/connect-board-preview.jpg" title={`${f.title}: Miro board`} />
                   <p className="board-cap">
                     {f.embed.label}{" "}
                     <a href={f.embed.open} target="_blank" rel="noreferrer">Open in Miro ↗</a>

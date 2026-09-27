@@ -203,16 +203,21 @@ img { max-width: 100%; }
 
 /* featured card with a live board */
 .feat-board { flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 10px; padding: 16px; }
-.feat-board iframe { display: block; width: 100%; flex: 1; min-height: 300px; border: var(--thin); border-radius: 10px; background: #fff; }
 .board-cap { font-size: 13px; line-height: 1.4; }
 .board-cap a { font-weight: 700; text-decoration: underline; }
 .feat-embed { grid-template-columns: 420px 1fr; }
 .feat-body { color: inherit; }
 
-/* featured card with a demo video across the top */
-.feat-video { grid-template-columns: 1fr; }
-.feat-demo { flex-direction: column; align-items: stretch; gap: 10px; padding: 18px; border-right: 0; border-bottom: var(--border); }
-.feat-demo video { display: block; width: 100%; aspect-ratio: 21 / 9; object-fit: cover; background: #fff; border: var(--thin); border-radius: 10px; }
+/* featured card with a demo video in the left column (same size as the Miro board) */
+.feat-demo { flex-direction: column; align-items: stretch; justify-content: center; gap: 10px; padding: 16px; }
+.feat-demo video { display: block; width: 100%; flex: 1; min-height: 300px; object-fit: contain; background: #fff; border: var(--thin); border-radius: 10px; }
+@media (max-width: 900px) { .feat-demo video { min-height: 0; aspect-ratio: 21 / 9; flex: none; } }
+
+/* Miro: still preview first, live board fades in over it */
+.miro-embed { position: relative; flex: 1; min-height: 300px; border: var(--thin); border-radius: 10px; overflow: hidden; background: #fff; }
+.miro-preview { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.miro-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; opacity: 0; transition: opacity .5s ease; }
+.miro-embed iframe.is-ready { opacity: 1; }
 
 /* "you can click this" cues */
 .cue { margin-top: 6px; font: 700 12px var(--mono); color: var(--ink); display: inline-flex; align-self: flex-start; gap: 6px; padding: 3px 9px; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--yellow); }
@@ -348,7 +353,7 @@ img { max-width: 100%; }
   .nav .btn.bg-pink { display: none; }
   .logo { font-size: 22px; }
   .feat-embed { grid-template-columns: 1fr; }
-  .feat-board iframe { min-height: 320px; }
+  .miro-embed { min-height: 320px; }
   .btn { min-height: 44px; }
   .hero { padding-top: 28px; }
   .hero { grid-template-columns: 1fr; gap: 28px; }
