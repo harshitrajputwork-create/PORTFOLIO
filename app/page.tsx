@@ -57,7 +57,12 @@ export default function Home() {
               {j.link && (
                 <Link className="j-link" href={j.link.href}>{j.link.label} →</Link>
               )}
-              {j.state === "next" && <HireMe className="btn btn-sm bg-yellow j-hire" label="Work with me →" />}
+              {j.state === "next" && (
+                <div className="j-ctas">
+                  <HireMe className="btn btn-sm bg-yellow j-hire" label="Work with me →" />
+                  <a className="btn btn-sm btn-wa j-hire" href={profile.whatsapp} target="_blank" rel="noreferrer">WhatsApp</a>
+                </div>
+              )}
             </li>
           ))}
         </ol>
@@ -196,6 +201,7 @@ export default function Home() {
           <p className="contact-mail mono">{profile.email}</p>
           <div className="cta-row">
             <HireMe className="btn bg-pink" label="Work with me" />
+            <a className="btn btn-wa" href={profile.whatsapp} target="_blank" rel="noreferrer">WhatsApp me</a>
             <a className="btn" href={`mailto:${profile.email}`}>Email me</a>
             <a className="btn" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
             <a className="btn" href={profile.resume} target="_blank" rel="noreferrer">Resume ↗</a>

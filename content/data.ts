@@ -13,6 +13,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/harshit-rajput-9a9a69189/",
   github: "https://github.com/harshitrajputwork-create",
   resume: "/Harshit-Rajput-Resume.pdf",
+  whatsapp: "https://wa.me/918586041060?text=" + encodeURIComponent("Hi Harshit, I found your portfolio and would like to chat about "),
   photo: "/harshit.jpg",
   location: "New Delhi, India",
 };

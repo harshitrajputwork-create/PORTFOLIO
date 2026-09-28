@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 // after clicking "Activate" there, every submission arrives as a normal email.
 const ENDPOINT = "https://formsubmit.co/ajax/harshitrajputwork@gmail.com";
 const EMAIL = "harshitrajputwork@gmail.com";
+const WHATSAPP = "https://wa.me/918586041060?text=" + encodeURIComponent("Hi Harshit, I found your portfolio and would like to chat about ");
 
 type Status = "idle" | "sending" | "sent" | "error";
 const REASONS = ["Full-time PM role", "Freelance product project", "Something else"];
@@ -106,9 +107,12 @@ export default function HireMe({ label = "Work with me", className = "btn bg-yel
               {status === "error" && (
                 <p className="hire-err">That didn&apos;t send. Please email me directly at <b className="mono">{EMAIL}</b>.</p>
               )}
-              <button type="submit" className="btn bg-pink hire-send" disabled={status === "sending"}>
-                {status === "sending" ? "Sending…" : "Send to Harshit →"}
-              </button>
+              <div className="hire-actions">
+                <button type="submit" className="btn bg-pink hire-send" disabled={status === "sending"}>
+                  {status === "sending" ? "Sending…" : "Send to Harshit →"}
+                </button>
+                <a className="hire-wa" href={WHATSAPP} target="_blank" rel="noreferrer">or message me on WhatsApp ↗</a>
+              </div>
             </form>
           )}
         </div>
