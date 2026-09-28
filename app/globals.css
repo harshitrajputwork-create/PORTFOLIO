@@ -42,7 +42,7 @@ img { max-width: 100%; }
 /* primitives */
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
-  font-weight: 700; font-family: var(--body);
+  font: inherit; font-weight: 700; font-family: var(--body); color: var(--ink);
   padding: 11px 20px;
   background: #fff;
   border: var(--border);
@@ -159,7 +159,12 @@ img { max-width: 100%; }
 /* journey: horizontal rail under the hero */
 .journey-wrap { padding-top: 20px; max-width: 1680px; padding-left: clamp(16px, 2.4vw, 40px); padding-right: clamp(16px, 2.4vw, 40px); }
 .journey-wrap .journey { gap: 16px; }
-.j-hire { margin-top: auto; align-self: flex-start; white-space: nowrap; }
+.j-hire { white-space: nowrap; }
+.j-ctas { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; }
+.btn-wa { background: #25d366; color: var(--ink); }
+.hire-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 16px; }
+.hire-actions .hire-send { margin-top: 0; }
+.hire-wa { font-weight: 700; text-decoration: underline; text-decoration-color: #25d366; text-decoration-thickness: 3px; text-underline-offset: 4px; }
 .journey > li.next p { margin-bottom: 10px; }
 .journey-title { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
 .journey { position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; padding-top: 22px; }
