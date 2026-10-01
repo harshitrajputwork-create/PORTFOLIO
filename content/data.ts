@@ -56,6 +56,7 @@ export type Featured = {
   flow: string[]; // mini visual on the card
   embed?: { src: string; open: string; label: string }; // replaces the mini visual
   video?: { src: string; poster: string; label: string }; // full-width demo on top of the card
+  shot?: { src: string; alt: string; label: string; open: string }; // product screenshot with a live link
   problem: string;
   decision: string;
   result: string;
@@ -87,6 +88,12 @@ export const featured: Featured[] = [
     when: "2025",
     color: "pink",
     flow: ["Day 1–30", "Train", "Practise", "Manager test"],
+    shot: {
+      src: "/case/onboarding/card.jpg",
+      alt: "A new barista's onboarding path: pre-boarding and Day 1 done, Week 1 in progress, a manager check pending",
+      label: "The prototype I built: a new hire sees each phase, what's done and what's waiting on their manager.",
+      open: "https://taqtics-onboard.lovable.app",
+    },
     problem: "Retail and restaurant chains lose new hires early. There was no fixed plan for their first weeks, so each store onboarded differently.",
     decision: "I built scheduled paths of training, short assignments and a manager-led practical test, then made them configurable for other uses.",
     result: "Adopted by 20+ clients. 12–13 of them reported attrition drops, averaging ~30%.",

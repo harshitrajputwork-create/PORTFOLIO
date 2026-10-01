@@ -10,7 +10,7 @@ export type Block =
       heading: string;
       items: { title: string; objective: string; how: string[]; impact: string[]; metrics: string[]; image?: string; color: string }[];
     }
-  | { kind: "images"; heading: string; items: { src: string; alt: string }[] }
+  | { kind: "images"; heading: string; items: { src: string; alt: string; caption?: string }[]; cols?: 2; note?: string; open?: { label: string; href: string } }
   | { kind: "embed"; heading: string; src: string; title: string; height: number; open: string; note?: string }
   | { kind: "video"; heading: string; src?: string; poster?: string; caption: string }
   | { kind: "code"; heading: string; lang: string; code: string; note?: string }
@@ -213,6 +213,19 @@ export const caseBodies: Record<string, Block[]> = {
         { title: "Visibility", sub: "Head office sees every store's progress" },
       ],
       note: "Example: a new barista is tested on serving a coffee. The manager records it and it goes to head office, so every store trains to the same standard.",
+    },
+    {
+      kind: "images",
+      heading: "The prototype",
+      note: "I made this clickable prototype to work out the flow for new hires and managers before it was built. The names in it are made up.",
+      open: { label: "Try the prototype", href: "https://taqtics-onboard.lovable.app" },
+      cols: 2,
+      items: [
+        { src: "/case/onboarding/employee-journey.jpg", alt: "Employee view of a barista onboarding path split into phases", caption: "The new hire's path, phase by phase. The next phase unlocks once this one is done." },
+        { src: "/case/onboarding/passport.jpg", alt: "Employee passport with today's tasks, a buddy and a manager", caption: "Today's tasks, plus a named buddy and manager, so nobody is left wondering what to do." },
+        { src: "/case/onboarding/manager-dashboard.jpg", alt: "Manager dashboard with active journeys and pending verifications", caption: "The manager sees who is stuck and approves practical checks, like a shadow audit." },
+        { src: "/case/onboarding/journey-builder.jpg", alt: "Journey builder listing barista, cashier, food safety and shift lead journeys", caption: "One builder for every path: onboarding, certification or promotion readiness." },
+      ],
     },
     {
       kind: "text",

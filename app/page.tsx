@@ -86,11 +86,21 @@ export default function Home() {
         <p className="section-sub">Three problems I owned: why they mattered, what I chose, and what happened.</p>
         <div className="featured">
           {featured.map((f) => (
-            <article key={f.slug} className={`feat ${f.embed || f.video ? "feat-embed" : ""}`}>
+            <article key={f.slug} className={`feat ${f.embed || f.video || f.shot ? "feat-embed" : ""}`}>
               {f.video ? (
                 <div className={`feat-visual feat-demo bg-${f.color}`}>
                   <video src={f.video.src} poster={f.video.poster} autoPlay muted loop playsInline preload="auto" aria-label={f.video.label} />
                   <p className="board-cap">{f.video.label}</p>
+                </div>
+              ) : f.shot ? (
+                <div className={`feat-visual feat-demo bg-${f.color} ${inkLight(f.color)}`}>
+                  <Link href={`/case/${f.slug}`} className="feat-shot" tabIndex={-1}>
+                    <img src={f.shot.src} alt={f.shot.alt} />
+                  </Link>
+                  <p className="board-cap">
+                    {f.shot.label}{" "}
+                    <a href={f.shot.open} target="_blank" rel="noreferrer">Try the prototype ↗</a>
+                  </p>
                 </div>
               ) : f.embed ? (
                 <div className={`feat-visual feat-board bg-${f.color} ${inkLight(f.color)}`}>

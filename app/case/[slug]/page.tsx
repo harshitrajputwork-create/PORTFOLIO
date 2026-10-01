@@ -186,13 +186,22 @@ function Section({ b }: { b: Block }) {
       return (
         <section className="cs-block">
           <h2>{b.heading}</h2>
-          <div className="cs-images">
+          {b.note && <p className="cs-note cs-note-top">{b.note}</p>}
+          <div className={`cs-images ${b.cols === 2 ? "cs-images-2" : ""}`}>
             {b.items.map((im) => (
-              <a key={im.src} href={im.src} target="_blank" rel="noreferrer">
-                <img className="cs-img" src={im.src} alt={im.alt} loading="lazy" />
-              </a>
+              <figure key={im.src}>
+                <a href={im.src} target="_blank" rel="noreferrer">
+                  <img className="cs-img" src={im.src} alt={im.alt} loading="lazy" />
+                </a>
+                {im.caption && <figcaption>{im.caption}</figcaption>}
+              </figure>
             ))}
           </div>
+          {b.open && (
+            <p className="cs-open">
+              <a className="btn btn-sm bg-yellow" href={b.open.href} target="_blank" rel="noreferrer">{b.open.label} ↗</a>
+            </p>
+          )}
         </section>
       );
   }
