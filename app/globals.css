@@ -336,7 +336,6 @@ img { max-width: 100%; }
 .cs-images figure { margin: 0; }
 .cs-images figcaption { margin-top: 8px; font-size: 14.5px; color: var(--muted); }
 .cs-images-2 { grid-template-columns: 1fr 1fr; }
-.cs-open { margin-top: 16px; }
 @media (max-width: 760px) { .cs-images-2 { grid-template-columns: 1fr; } }
 .cs-end { margin-top: 64px; padding: 28px; text-align: center; background: var(--yellow); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
 .cs-end h2 { font-family: var(--display); font-size: 28px; }

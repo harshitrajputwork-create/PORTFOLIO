@@ -91,7 +91,7 @@ export const featured: Featured[] = [
     shot: {
       src: "/case/onboarding/card.jpg",
       alt: "A new barista's onboarding path: pre-boarding and Day 1 done, Week 1 in progress, a manager check pending",
-      label: "The prototype I built: a new hire sees each phase, what's done and what's waiting on their manager.",
+      label: "From my prototype to the live product. The case shows what I explored, what I cut and what shipped.",
       open: "https://taqtics-onboard.lovable.app",
     },
     problem: "Retail and restaurant chains lose new hires early. There was no fixed plan for their first weeks, so each store onboarded differently.",
