@@ -216,6 +216,8 @@ img { max-width: 100%; }
 /* featured card with a demo video in the left column (same size as the Miro board) */
 .feat-demo { flex-direction: column; align-items: stretch; justify-content: center; gap: 10px; padding: 16px; }
 .feat-demo video { display: block; width: 100%; flex: 1; min-height: 300px; object-fit: contain; background: #fff; border: var(--thin); border-radius: 10px; }
+.feat-shot { flex: 1; display: flex; align-items: center; }
+.feat-shot img { display: block; width: 100%; background: #fff; border: var(--thin); border-radius: 10px; }
 @media (max-width: 900px) { .feat-demo video { min-height: 0; aspect-ratio: 21 / 9; flex: none; } }
 
 /* Miro: still preview first, live board fades in over it */
@@ -331,6 +333,11 @@ img { max-width: 100%; }
 .chip-group h3 { font-family: var(--display); font-size: 18px; margin-bottom: 8px; }
 .cs-images { display: grid; gap: 18px; }
 .cs-img { display: block; width: 100%; border: var(--thin); border-radius: 12px; }
+.cs-images figure { margin: 0; }
+.cs-images figcaption { margin-top: 8px; font-size: 14.5px; color: var(--muted); }
+.cs-images-2 { grid-template-columns: 1fr 1fr; }
+.cs-open { margin-top: 16px; }
+@media (max-width: 760px) { .cs-images-2 { grid-template-columns: 1fr; } }
 .cs-end { margin-top: 64px; padding: 28px; text-align: center; background: var(--yellow); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
 .cs-end h2 { font-family: var(--display); font-size: 28px; }
 .cs-end .cta-row { justify-content: center; margin-top: 16px; }
