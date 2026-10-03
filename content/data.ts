@@ -186,7 +186,7 @@ export const earlier = [
 
 // Small builds for friends and myself.
 export const sideQuests = [
-  { title: "Kosha Life", story: "Brand site for a friend who started his own D2C skincare label.", href: "https://github.com/harshitrajputwork-create/Koshalife" },
+  { title: "Kosha Life", story: "Brand site for a friend who started his own D2C skincare label.", href: "https://thekoshalife.com/" },
   { title: "GramEEE", story: "Government-scheme finder for a friend working in the sustainability sector.", href: "https://github.com/harshitrajputwork-create/Gramee" },
   { title: "Bonjour Studio", story: "Website for a friend who started teaching French.", href: "https://bonjour-studio.vercel.app" },
   { title: "TripSplit", story: "Splitwise felt like too much for one trip, so I built a simpler splitter.", href: "https://tripsplit-snowy.vercel.app" },
