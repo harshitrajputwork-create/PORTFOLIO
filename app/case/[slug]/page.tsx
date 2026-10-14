@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { profile } from "@/content/data";
+import { profile, hiddenCases } from "@/content/data";
 import { caseBodies, caseMeta, type Block } from "@/content/cases";
 import Haptics from "@/components/Haptics";
 
@@ -9,7 +9,7 @@ const inkLight = (c: string) => (["blue", "purple"].includes(c) ? "ink-light" : 
 const verdictLabel = { chosen: "Chosen", rejected: "Ruled out", later: "Later" } as const;
 
 export function generateStaticParams() {
-  return Object.keys(caseMeta).map((slug) => ({ slug }));
+  return Object.keys(caseMeta).filter((slug) => !hiddenCases.includes(slug)).map((slug) => ({ slug }));
 }
 
 export const dynamicParams = false;
