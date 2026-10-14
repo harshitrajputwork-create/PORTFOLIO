@@ -168,8 +168,12 @@ export const sideProduct = {
   link: "https://mockaipminterview.lovable.app/",
 };
 
+// Cases hidden for now: not listed on the homepage and their pages aren't built.
+// Remove a slug from this list to bring the case back.
+export const hiddenCases: string[] = ["kazam"];
+
 // Earlier, smaller case studies.
-export const earlier = [
+const allEarlier = [
   {
     slug: "kazam",
     title: "Kazam EV: which feature to ship first",
@@ -183,6 +187,8 @@ export const earlier = [
     tag: "Analytics · Practice",
   },
 ];
+
+export const earlier = allEarlier.filter((e) => !hiddenCases.includes(e.slug));
 
 // Small builds for friends and myself.
 export const sideQuests = [
