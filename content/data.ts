@@ -177,7 +177,7 @@ const allEarlier = [
   {
     slug: "kazam",
     title: "Kazam EV: which feature to ship first",
-    note: "Self-initiated product case. One of the features I proposed later went live in Kazam's app.",
+    note: "Four user personas, four feature ideas, and how I chose which one to build first.",
     tag: "EV · Product case",
   },
   {
