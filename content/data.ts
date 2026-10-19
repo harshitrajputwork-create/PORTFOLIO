@@ -176,7 +176,7 @@ export const hiddenCases: string[] = [];
 const allEarlier = [
   {
     slug: "kazam",
-    title: "Kazam EV: which feature to ship first",
+    title: "EV charging app: which feature to ship first",
     note: "Four user personas, four feature ideas, and how I chose which one to build first.",
     tag: "EV · Product case",
   },
