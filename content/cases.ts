@@ -394,7 +394,7 @@ export const caseBodies: Record<string, Block[]> = {
       kind: "cards",
       heading: "Who I designed for",
       items: [
-        { title: "Aman, 28", sub: "Freelancer · Ola S1 Pro", color: "lime", body: "Can wait for cheaper slots, but peak pricing feels random and he can't negotiate." },
+        { title: "Vikram, 38", sub: "Fleet manager · 40 delivery e-scooters", color: "lime", body: "Charges his whole fleet every night at the same rates as a one-off driver, with no way to ask for a volume or off-peak price." },
         { title: "Priya, 32", sub: "Corporate commuter · Okinawa", color: "yellow", body: "Wants stations with cafés and clean restrooms, but can only filter by distance and plug." },
         { title: "Neetu, 53", sub: "Business owner · Nexon EV", color: "pink", body: "Long trips and remote routes. No reliable roadside help when the battery runs out." },
         { title: "Rajiv, 42", sub: "Solar homeowner · Ola", color: "blue", body: "Sells excess solar to the grid at low rates and wants to monetise his home charger." },
@@ -407,11 +407,11 @@ export const caseBodies: Record<string, Block[]> = {
         {
           title: "1 · Demand-based price requests",
           color: "purple",
-          objective: "Let price-flexible users bid for a lower rate, so owners can shift demand to off-peak hours.",
-          how: ["User picks a price band and sends a bid", "Owner sees clustered low bids and chooses to accept", "User is notified and charges at the agreed rate"],
-          impact: ["Spreads load between peak and off-peak", "Better station utilisation", "Users save money"],
-          metrics: ["% of users bidding", "Avg. off-peak price drop", "Peak congestion ↓", "Off-peak bookings ↑"],
-          tradeoff: "Bidding on every session doesn't scale: most drivers want to charge now, and owners can't review bids all day. For everyday users, the same goal works better as off-peak prices shown upfront or a price-drop alert. Bidding fits best at fleet scale, where delivery or cab operators book large blocks of off-peak slots at their depots.",
+          objective: "Let high-volume buyers like fleets bid for off-peak rates, so station owners fill idle hours.",
+          how: ["Fleet picks a price band and a block of off-peak slots, then sends a bid", "Owner sees the bids clustered by price and chooses which to accept", "Fleet is notified and charges at the agreed rate"],
+          impact: ["Spreads load from peak to off-peak", "Idle hours earn for station owners", "Lower charging cost for fleets"],
+          metrics: ["% of off-peak slots booked through bids", "Avg. bid discount", "Peak congestion ↓", "Repeat bids per fleet"],
+          tradeoff: "The slide shows the bid flow in the consumer app. For a single driver, bidding on every session doesn't scale: most want to charge now, and owners can't review bids all day. So bids are for high-volume buyers like fleets, while everyday drivers simply see off-peak prices upfront.",
           image: "/case/kazam/s5.jpg",
         },
         {
@@ -441,7 +441,7 @@ export const caseBodies: Record<string, Block[]> = {
           how: ["List a charger with availability and ₹/kWh", "EV owners find and book green chargers", "Payments and commission handled in-app (Razorpay/Stripe)"],
           impact: ["Cheaper, greener charging", "Homeowners recover solar costs"],
           metrics: ["% of solar owners listing", "kWh shared", "Grid dependency ↓", "Host earnings"],
-          tradeoff: "Strangers charging at private homes raises trust, safety and regulatory questions, so the pilot starts with semi-public hosts: housing societies, offices and shops.",
+          tradeoff: "Strangers charging at private homes raises trust, safety and regulatory questions, so the pilot starts with semi-public hosts: housing societies, offices and shops. Homeowners like Rajiv join once hosting has a track record.",
           image: "/case/kazam/s8.jpg",
         },
       ],
@@ -457,7 +457,7 @@ export const caseBodies: Record<string, Block[]> = {
       heading: "If I could ship only one first",
       items: [
         { name: "Customised community filters", verdict: "chosen", why: "Solves a daily search problem for most users with existing station data. No new operations, pricing changes or partners needed, so it can ship fast and prove demand." },
-        { name: "Demand-based price bids", verdict: "later", why: "Needs station owners to take part and changes their revenue. Test once there's enough usage data to show where off-peak demand sits." },
+        { name: "Demand-based price bids", verdict: "later", why: "Needs fleet partners and station owners willing to discount, and it changes their revenue. A pilot with a few fleets and partner stations can follow once the core app has usage." },
         { name: "Emergency SOS mode", verdict: "later", why: "High value but high operating cost: towing and portable-charger partners in every city, plus response-time promises." },
         { name: "P2P solar charge & earn", verdict: "later", why: "The biggest idea, but it needs hardware, payments, trust and regulatory work. A long-term bet, not a first release." },
       ],
