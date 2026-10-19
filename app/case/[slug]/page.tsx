@@ -115,6 +115,9 @@ function Section({ b }: { b: Block }) {
                   <div><b className="lbl">Expected impact</b><ul className="cs-list">{f.impact.map((h) => <li key={h}>{h}</li>)}</ul></div>
                   <div><b className="lbl">Metrics</b><ul className="stack">{f.metrics.map((m) => <li key={m}>{m}</li>)}</ul></div>
                 </div>
+                {f.tradeoff && (
+                  <p className="feature-note"><b className="lbl">Trade-offs</b>{f.tradeoff}</p>
+                )}
                 {f.image && (
                   <a href={f.image} target="_blank" rel="noreferrer">
                     <img className="feature-img" src={f.image} alt={`${f.title} slide`} loading="lazy" />
