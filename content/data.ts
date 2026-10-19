@@ -170,7 +170,7 @@ export const sideProduct = {
 
 // Cases hidden for now: not listed on the homepage and their pages aren't built.
 // Remove a slug from this list to bring the case back.
-export const hiddenCases: string[] = ["kazam"];
+export const hiddenCases: string[] = [];
 
 // Earlier, smaller case studies.
 const allEarlier = [
