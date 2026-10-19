@@ -96,9 +96,9 @@ export const caseMeta: Record<string, CaseMeta> = {
     title: "Kazam EV: which feature to ship first",
     kicker: "Product case · EV",
     color: "pink",
-    summary: "A self-initiated product case: four personas, four feature ideas, and which one I'd ship first. One of the ideas later went live in Kazam's app.",
+    summary: "A product case study: four personas, four feature ideas, and which one I'd ship first.",
     facts: [
-      { label: "Type", value: "Self-initiated product case" },
+      { label: "Type", value: "Product case study" },
       { label: "Tools", value: "Miro, PowerPoint" },
     ],
   },
