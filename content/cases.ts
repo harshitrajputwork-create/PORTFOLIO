@@ -8,7 +8,7 @@ export type Block =
   | {
       kind: "features";
       heading: string;
-      items: { title: string; objective: string; how: string[]; impact: string[]; metrics: string[]; image?: string; color: string }[];
+      items: { title: string; objective: string; how: string[]; impact: string[]; metrics: string[]; tradeoff?: string; image?: string; color: string }[];
     }
   | { kind: "images"; heading: string; items: { src: string; alt: string; caption?: string }[]; cols?: 2; note?: string; open?: { label: string; href: string } }
   | { kind: "embed"; heading: string; src: string; title: string; height: number; open: string; note?: string }
@@ -99,6 +99,7 @@ export const caseMeta: Record<string, CaseMeta> = {
     summary: "A product case study: four personas, four feature ideas, and which one I'd ship first.",
     facts: [
       { label: "Type", value: "Product case study" },
+      { label: "When", value: "2025" },
       { label: "Tools", value: "Miro, PowerPoint" },
     ],
   },
@@ -410,6 +411,7 @@ export const caseBodies: Record<string, Block[]> = {
           how: ["User picks a price band and sends a bid", "Owner sees clustered low bids and chooses to accept", "User is notified and charges at the agreed rate"],
           impact: ["Spreads load between peak and off-peak", "Better station utilisation", "Users save money"],
           metrics: ["% of users bidding", "Avg. off-peak price drop", "Peak congestion ↓", "Off-peak bookings ↑"],
+          tradeoff: "Bidding on every session doesn't scale: most drivers want to charge now, and owners can't review bids all day. For everyday users, the same goal works better as off-peak prices shown upfront or a price-drop alert. Bidding fits best at fleet scale, where delivery or cab operators book large blocks of off-peak slots at their depots.",
           image: "/case/kazam/s5.jpg",
         },
         {
@@ -419,6 +421,7 @@ export const caseBodies: Record<string, Block[]> = {
           how: ["Filter by ₹/kWh, charger type, café, restroom, Wi-Fi", "Save filters for repeat searches", "Share them to city EV communities"],
           impact: ["Faster, more relevant search", "Community-driven discovery"],
           metrics: ["% of bookings using a filter", "Top filter combos", "Time to find a charger ↓", "CSAT ↑"],
+          tradeoff: "Saved filters are the core value; community sharing is an add-on. The real dependency is accurate amenity data, so it starts with station owners and user reviews.",
           image: "/case/kazam/s6.jpg",
         },
         {
@@ -428,6 +431,7 @@ export const caseBodies: Record<string, Block[]> = {
           how: ["SOS button on the map", "Choose a service, and the nearest provider is assigned", "Live tracking until help arrives"],
           impact: ["Less range anxiety", "Trust that keeps users on the platform"],
           metrics: ["Avg. response time", "% of SOS requests fulfilled", "Retention after an SOS", "SOS ratings"],
+          tradeoff: "Kazam partners with existing roadside-assistance providers instead of running its own fleet. A low-battery warning that routes users to the nearest charger comes first, since preventing a stranding is cheaper than rescuing one.",
           image: "/case/kazam/s7.jpg",
         },
         {
@@ -437,6 +441,7 @@ export const caseBodies: Record<string, Block[]> = {
           how: ["List a charger with availability and ₹/kWh", "EV owners find and book green chargers", "Payments and commission handled in-app (Razorpay/Stripe)"],
           impact: ["Cheaper, greener charging", "Homeowners recover solar costs"],
           metrics: ["% of solar owners listing", "kWh shared", "Grid dependency ↓", "Host earnings"],
+          tradeoff: "Strangers charging at private homes raises trust, safety and regulatory questions, so the pilot starts with semi-public hosts: housing societies, offices and shops.",
           image: "/case/kazam/s8.jpg",
         },
       ],
