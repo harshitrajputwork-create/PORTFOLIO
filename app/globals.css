@@ -92,7 +92,10 @@ img { max-width: 100%; }
 .photo { display: block; width: 240px; height: 320px; object-fit: cover; object-position: center; border: var(--border); border-radius: 20px; box-shadow: 8px 8px 0 var(--pink); transform: rotate(2deg); }
 .photo-tag { position: absolute; left: -24px; bottom: 18px; font-size: 13px; }
 .photo { position: relative; z-index: 1; }
-.photo.photo-back { position: absolute; top: 0; left: 0; z-index: 0; transform: translate(-96px, 26px) rotate(-9deg); box-shadow: 6px 6px 0 var(--blue); }
+.photo { transition: transform .35s ease; }
+.photo.photo-back { position: absolute; top: 0; left: 0; z-index: 0; transform: translate(-16px, 10px) rotate(-5deg); box-shadow: 6px 6px 0 var(--blue); }
+/* hover the photos: the one behind slides out in full, then tucks back */
+.hero-photo:hover .photo.photo-back { transform: translate(-262px, 0) rotate(-3deg); }
 .photo-tag { z-index: 2; }
 
 .hero-id { display: flex; align-items: center; gap: 14px; }
