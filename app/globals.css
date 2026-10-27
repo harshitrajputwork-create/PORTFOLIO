@@ -89,8 +89,11 @@ img { max-width: 100%; }
 .lead { font-size: 18px; max-width: 60ch; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .hero-photo { position: relative; justify-self: end; }
-.photo { display: block; width: 240px; height: 300px; object-fit: cover; object-position: center 25%; border: var(--border); border-radius: 20px; box-shadow: 8px 8px 0 var(--pink); transform: rotate(2deg); }
+.photo { display: block; width: 240px; height: 320px; object-fit: cover; object-position: center; border: var(--border); border-radius: 20px; box-shadow: 8px 8px 0 var(--pink); transform: rotate(2deg); }
 .photo-tag { position: absolute; left: -24px; bottom: 18px; font-size: 13px; }
+.photo { position: relative; z-index: 1; }
+.photo.photo-back { position: absolute; top: 0; left: 0; z-index: 0; transform: translate(-96px, 26px) rotate(-9deg); box-shadow: 6px 6px 0 var(--blue); }
+.photo-tag { z-index: 2; }
 
 .hero-id { display: flex; align-items: center; gap: 14px; }
 .avatar-mobile { display: none; }
@@ -371,7 +374,7 @@ img { max-width: 100%; }
   .hero { padding-top: 28px; }
   .hero { grid-template-columns: 1fr; gap: 28px; }
   .hero-photo { justify-self: start; }
-  .photo { width: 200px; height: 240px; }
+  .photo { width: 200px; height: 267px; }
   .proof, .more-grid, .two-col, .tldr { grid-template-columns: 1fr; }
   .feat, .side-product { grid-template-columns: 1fr; }
   .feat-visual { border-right: 0; border-bottom: var(--border); }
@@ -381,7 +384,7 @@ img { max-width: 100%; }
 }
 @media (max-width: 600px) {
   .hero-photo { display: none; }
-  .avatar-mobile { display: block; width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: center 22%; border: var(--border); box-shadow: 4px 4px 0 var(--pink); flex-shrink: 0; }
+  .avatar-mobile { display: block; width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: center; border: var(--border); box-shadow: 4px 4px 0 var(--pink); flex-shrink: 0; }
 }
 @media (max-width: 480px) {
   .pdr div { grid-template-columns: 1fr; gap: 0; }

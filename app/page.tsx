@@ -23,7 +23,7 @@ export default function Home() {
       <header id="top" className="hero wrap">
         <div className="hero-copy">
           <div className="hero-id">
-            <img className="avatar-mobile" src={profile.photo} alt={profile.name} />
+            <img className="avatar-mobile" src={profile.avatar} alt={profile.name} />
             <span className="sticker bg-lime rot-l">{profile.title}</span>
           </div>
           <h1>
@@ -39,6 +39,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-photo">
+          <img className="photo photo-back" src={profile.photoBack} alt="" aria-hidden="true" />
           <img className="photo" src={profile.photo} alt={profile.name} />
           <span className="sticker bg-blue ink-light photo-tag rot-r">📍 {profile.location}</span>
         </div>
