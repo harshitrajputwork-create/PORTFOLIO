@@ -15,7 +15,7 @@ export const profile = {
   resume: "/Harshit-Rajput-Resume.pdf",
   whatsapp: "https://wa.me/918586041060?text=" + encodeURIComponent("Hi Harshit, I found your portfolio and would like to chat about "),
   photo: "/harshit-main.jpg",
-  photoBack: "/harshit-back.jpg", // shown tilted behind the main photo
+  photoBack: "/harshit.jpg", // shown tilted behind the main photo
   avatar: "/harshit-avatar.jpg", // round photo on mobile
   location: "New Delhi, India",
 };
