@@ -177,7 +177,7 @@ export const ownProduct = {
   uses: ["Sales demos", "Client onboarding", "App training", "App testing & QA", "Tutorials", "Classrooms"],
   site: "https://mirrordock.pages.dev/",
   download: "https://github.com/harshitrajputwork-create/mirrordock/releases/download/v0.1.0-pilot/MirrorDock-Setup-0.1.0-pilot.exe",
-  image: "/case/mirrordock/hero.jpg",
+  image: "/case/mirrordock/site-full.jpg", // the whole site, shown in a scrolling window
   note: "Free · no watermark · no time limit · Windows 10 & 11",
 };
 
