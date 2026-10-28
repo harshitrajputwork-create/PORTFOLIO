@@ -161,6 +161,26 @@ export const moreWork: Work[] = [
   },
 ];
 
+// My own product: shown prominently on the homepage, with its own page.
+export const ownProduct = {
+  slug: "mirrordock",
+  name: "MirrorDock",
+  kicker: "My own product · Windows app · Free pilot",
+  title: "MirrorDock: present your iPhone app from a Windows laptop",
+  origin:
+    "Our sales team presents from Windows laptops, but our app lives on iPhones, and there was no budget for MacBooks. Windows can't show an iPhone screen, so every demo became a workaround. I built a free app that fixes it, and the team now uses it in client meetings on Google Meet and Teams.",
+  promises: [
+    "Shows up reliably in the iPhone's Screen Mirroring, even on tricky office Wi-Fi",
+    "A real-looking floating iPhone you can share in Meet, Teams or Zoom",
+    "Control it with your mouse, draw on it, and record the demo with your voice",
+  ],
+  uses: ["Sales demos", "Client onboarding", "App training", "App testing & QA", "Tutorials", "Classrooms"],
+  site: "https://mirrordock.pages.dev/",
+  download: "https://github.com/harshitrajputwork-create/mirrordock/releases/download/v0.1.0-pilot/MirrorDock-Setup-0.1.0-pilot.exe",
+  image: "/case/mirrordock/hero.jpg",
+  note: "Free · no watermark · no time limit · Windows 10 & 11",
+};
+
 // Side product with its own page.
 export const sideProduct = {
   slug: "mockai",

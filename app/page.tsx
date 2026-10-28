@@ -2,7 +2,7 @@ import Link from "next/link";
 import Haptics from "@/components/Haptics";
 import HireMe from "@/components/HireMe";
 import MiroEmbed from "@/components/MiroEmbed";
-import { profile, proof, featured, moreWork, sideProduct, earlier, sideQuests, journey } from "@/content/data";
+import { profile, proof, featured, moreWork, ownProduct, sideProduct, earlier, sideQuests, journey } from "@/content/data";
 
 const inkLight = (c: string) => (["blue", "purple"].includes(c) ? "ink-light" : "");
 
@@ -13,6 +13,7 @@ export default function Home() {
         <a href="#top" className="logo">Harshit Rajput<span>.</span></a>
         <div className="nav-links">
           <a href="#work">Work</a>
+          <a href="#mirrordock">MirrorDock</a>
           <a href="#about">About</a>
           <a href={profile.resume} target="_blank" rel="noreferrer">Resume</a>
           <a href="#contact" className="btn btn-sm bg-pink">Say hi</a>
@@ -134,6 +135,34 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      {/* MY OWN PRODUCT */}
+      <section id="mirrordock" className="wrap section section-tight">
+        <h2 className="section-title small">Something I&apos;m building</h2>
+        <article className="own">
+          <div className="own-body">
+            <span className="kicker">{ownProduct.kicker}</span>
+            <h3>{ownProduct.title}</h3>
+            <p>{ownProduct.origin}</p>
+            <ul className="own-promises">
+              {ownProduct.promises.map((x) => <li key={x}>{x}</li>)}
+            </ul>
+            <div className="own-uses">
+              <span className="cue">Made for</span>
+              {ownProduct.uses.map((u) => <span key={u} className="own-chip">{u}</span>)}
+            </div>
+            <div className="cta-row">
+              <a href={ownProduct.download} className="btn bg-orange">Download free for Windows ↓</a>
+              <a href={ownProduct.site} className="btn" target="_blank" rel="noreferrer">Visit the site ↗</a>
+              <Link href={`/case/${ownProduct.slug}`} className="btn">How I built it →</Link>
+            </div>
+            <span className="own-note mono">{ownProduct.note}</span>
+          </div>
+          <a href={ownProduct.site} target="_blank" rel="noreferrer" className="own-visual" tabIndex={-1} aria-hidden>
+            <img src={ownProduct.image} alt="" />
+          </a>
+        </article>
       </section>
 
       {/* MORE WORK */}
