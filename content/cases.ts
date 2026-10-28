@@ -80,6 +80,23 @@ export const caseMeta: Record<string, CaseMeta> = {
       result: "52 of 80 vendor quotes accepted by clients in month one (65%).",
     },
   },
+  mirrordock: {
+    title: "MirrorDock: present your iPhone app from a Windows laptop",
+    kicker: "My own product · Windows · Free pilot",
+    color: "orange",
+    summary: "A free Windows app I built after watching our sales team struggle to show our iPhone app in client meetings, then shaped into a product for anyone who demos an app.",
+    facts: [
+      { label: "My role", value: "Founder. Problem, research, product, design and build" },
+      { label: "Platform", value: "Windows 10 & 11, with any iPhone or iPad over Screen Mirroring" },
+      { label: "Status", value: "Pilot 0.1, free. Used by our sales team at work" },
+      { label: "Try it", value: "mirrordock.pages.dev" },
+    ],
+    tldr: {
+      problem: "Sales reps present from Windows laptops, but Windows can't show an iPhone, and MacBooks weren't in the budget.",
+      decision: "Build a free mirroring app made for presenting, not gaming: a real-looking iPhone, mouse control, a pen and recording.",
+      result: "Our sales team demos the iPhone app in Meet and Teams from their Windows laptops, at no cost.",
+    },
+  },
   mockai: {
     title: "MockAI: an AI interviewer for PM case rounds",
     kicker: "Side product · AI",
@@ -192,6 +209,78 @@ export const caseBodies: Record<string, Block[]> = {
         "Track how often an uploaded form is edited afterwards, as a simple accuracy measure for the AI",
         "Show a preview before upload, so obvious mistakes are caught earlier",
         "Build the upload into the product itself, so clients can set up their own checklists",
+      ],
+    },
+  ],
+
+  mirrordock: [
+    {
+      kind: "text",
+      heading: "Where it started",
+      body:
+        "Our sales team presents slides from Windows laptops, but the product they sell is an iPhone app. Buying MacBooks for everyone wasn't in the budget, and Windows has no built-in way to show an iPhone screen. So every client demo turned into a workaround: joining the call a second time from the phone, pointing a webcam at it, or trying paid mirroring apps that added watermarks, cut off after ten minutes, or didn't show up on office Wi-Fi.",
+    },
+    {
+      kind: "images",
+      heading: "What the client sees",
+      items: [
+        { src: "/case/mirrordock/meeting.jpg", alt: "A Meet call where the presenter's slides and a live iPhone app appear together on one shared screen", caption: "Slides as usual, with the live iPhone app floating on top. One shared screen, no second device in the call." },
+      ],
+    },
+    {
+      kind: "list",
+      heading: "What I built",
+      items: [
+        "Uses the iPhone's own Screen Mirroring, so there's nothing to install on the phone, no cable and no account",
+        "Keeps announcing itself the way the iPhone expects, so it appears even on Wi-Fi where other apps stay invisible, and says what's wrong if something blocks it",
+        "A realistic floating iPhone with no window border, which you can resize, keep on top or make full screen",
+        "Mouse control over Bluetooth, a whiteboard pen to circle what matters, and recording with your voice",
+        "Up to four iPhones or iPads at once, screenshots, custom shortcuts and a smooth 60 fps picture",
+      ],
+    },
+    {
+      kind: "text",
+      heading: "Then I looked beyond my own team",
+      body:
+        "Once it worked for us, I studied ten competing apps from their own websites and pricing pages, plus public forums. People keep asking how to show an iPhone in a Windows meeting; one Microsoft Q&A thread is marked as asked by 200+ people. The market sells mirroring for watching videos, gaming and classrooms. Business use is usually a single line, and the one app built for polished app demos, Bezel, is Mac only.",
+    },
+    {
+      kind: "table",
+      heading: "How the market is split",
+      headers: ["Camp", "Examples", "Who they sell to", "The gap"],
+      rows: [
+        ["Consumer mirroring apps", "ApowerMirror, LetsView, iMyFone MirrorTo, AirDroid Cast", "Home users and gamers", "Watermarks or time limits until you pay $20–60"],
+        ["School specialists", "Reflector, AirServer, Mirroring360", "Schools and universities", "Built for projectors and IT rollouts, not client demos"],
+        ["Meeting-room hardware", "AirServer Connect, Ditto", "Conference rooms", "Around $1,000+ per room"],
+        ["Demo tools", "Bezel, Duet", "Presenters and app teams", "Bezel is Mac only; Duet is a subscription with its own phone app"],
+      ],
+      note: "Nobody owns \"show your iPhone app to a client from a Windows laptop\". That's the position MirrorDock takes.",
+    },
+    {
+      kind: "options",
+      heading: "Who to build for first",
+      items: [
+        { name: "Sales, pre-sales and customer success", verdict: "chosen", why: "The problem I started with. A polished demo helps close deals, and a failed connection in front of a client is embarrassing, so these teams care most about reliability." },
+        { name: "App training, onboarding and support", verdict: "chosen", why: "Same workflow: teach an app on a call with a pen to circle where to tap, then send the recording." },
+        { name: "App teams testing on Windows", verdict: "later", why: "Cross-platform teams test on real iPhones but can't use Apple's Mac tools. Several phones at once and bug recordings already help them." },
+        { name: "Classrooms", verdict: "later", why: "A big but crowded market that needs IT rollout features and volume licences first." },
+        { name: "Gaming and watching videos", verdict: "rejected", why: "Crowded, price-driven, and gamers mostly want Android keyboard mapping. The free version still works for them." },
+      ],
+    },
+    {
+      kind: "text",
+      heading: "Pricing",
+      body:
+        "Free during the pilot, with no watermark, no time limit and no sign-up, so it spreads by word of mouth and I learn from real use. Competitors charge $20–60 or hold features behind watermarks. Later, a paid business licence per user for teams that need one invoice, a commercial-use licence and priority help, while a free version stays available.",
+    },
+    {
+      kind: "list",
+      heading: "What's next",
+      items: [
+        "Presenter mode: one clean window to share, a shortcut to bring the phone forward, and a Do Not Disturb reminder",
+        "A clear fallback when client Wi-Fi blocks devices from seeing each other (phone hotspot now, USB cable later)",
+        "Drawings included in recordings",
+        "A simple team licence, so a company can equip its whole sales team at once",
       ],
     },
   ],
