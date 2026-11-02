@@ -115,7 +115,7 @@ export default function Home() {
       {/* SELECTED WORK */}
       <section id="work" className="wrap section">
         <h2 className="section-title">Selected work</h2>
-        <p className="section-sub">Three problems I owned: why they mattered, what I chose, and what happened.</p>
+        <p className="section-sub">Four problems I owned: why they mattered, what I chose, and what happened.</p>
         <div className="featured">
           {featured.map((f) => (
             <article key={f.slug} className={`feat ${f.embed || f.video || f.shot ? "feat-embed" : ""}`}>
@@ -131,7 +131,11 @@ export default function Home() {
                   </Link>
                   <p className="board-cap">
                     {f.shot.label}{" "}
-                    <a href={f.shot.open} target="_blank" rel="noreferrer">Try the prototype ↗</a>
+                    {f.shot.open.startsWith("/") ? (
+                      <Link href={f.shot.open}>Try the prototype →</Link>
+                    ) : (
+                      <a href={f.shot.open} target="_blank" rel="noreferrer">Try the prototype ↗</a>
+                    )}
                   </p>
                 </div>
               ) : f.embed ? (
@@ -179,7 +183,11 @@ export default function Home() {
               <p><b>What I did.</b> {w.what}</p>
               <p className="more-result"><b>Result.</b> {w.result}</p>
               {w.link && (
-                <a className="text-link" href={w.link.href} target="_blank" rel="noreferrer">{w.link.label} ↗</a>
+                w.link.href.startsWith("/") ? (
+                  <Link className="text-link" href={w.link.href}>{w.link.label} →</Link>
+                ) : (
+                  <a className="text-link" href={w.link.href} target="_blank" rel="noreferrer">{w.link.label} ↗</a>
+                )
               )}
             </article>
           ))}

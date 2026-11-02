@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { profile, hiddenCases } from "@/content/data";
 import { caseBodies, caseMeta, type Block } from "@/content/cases";
 import Haptics from "@/components/Haptics";
+import IssuePrototype from "@/components/IssuePrototype";
 
 const inkLight = (c: string) => (["blue", "purple"].includes(c) ? "ink-light" : "");
 const verdictLabel = { chosen: "Chosen", rejected: "Ruled out", later: "Later" } as const;
@@ -183,6 +184,14 @@ function Section({ b }: { b: Block }) {
               </div>
             ))}
           </div>
+        </section>
+      );
+    case "prototype":
+      return (
+        <section className="cs-block" id="prototype">
+          <h2>{b.heading}</h2>
+          {b.note && <p className="cs-note cs-note-top">{b.note}</p>}
+          <IssuePrototype />
         </section>
       );
     case "images":
