@@ -5,7 +5,7 @@
 
 export const profile = {
   name: "Harshit Rajput",
-  title: "Product Specialist at Taqtics",
+  title: "Product · Enterprise SaaS, Automation & AI",
   headline: "I turn complex problems into simple, useful products.",
   intro:
     "I helped launch a two-sided marketplace at Connect, worked inside a US fintech's risk and payments operations at Genpact, and now drive product discovery, prioritisation and delivery at Taqtics, turning customer problems into features used by 25+ enterprise brands. Across all of it, I start with the user's problem, let data guide the decision, and build to test ideas.",
@@ -25,23 +25,23 @@ export type Color = "pink" | "blue" | "yellow" | "lime" | "orange" | "purple";
 // Three proof points, each with the context needed to judge it.
 export const proof = [
   {
-    value: "30 sec",
-    label: "to set up a client checklist",
-    context: "Down from 3–4 checklists a day by hand, after I added AI-generated setup.",
+    value: "~2 days → <2 hrs",
+    label: "client checklist setup",
+    context: "An AI tool turns a client's SOP into an import-ready checklist in about 30 seconds, instead of re-typing it by hand.",
     link: "/case/ai-configuration",
     color: "yellow" as Color,
   },
   {
     value: "~30%",
     label: "lower frontline attrition",
-    context: "Average reported by 12–13 clients after using the 30/60/90-day onboarding paths I built.",
+    context: "Average reported by 12–13 clients after adopting the 30/60/90-day onboarding paths I launched.",
     link: "/case/onboarding-paths",
     color: "pink" as Color,
   },
   {
-    value: "70%",
-    label: "fewer reopened tickets",
-    context: "Same-category tickets at a location stopped coming back once a root-cause step was required to close.",
+    value: "15 days → <2 days",
+    label: "median issue resolution",
+    context: "Across 20+ clients, once every failed audit item created an owned, tracked corrective action. Reopened tickets fell 70%.",
     link: "#more-work",
     color: "lime" as Color,
   },
@@ -67,7 +67,7 @@ export type Featured = {
 export const featured: Featured[] = [
   {
     slug: "ai-configuration",
-    title: "Client setup in 30 seconds with an AI configuration engine",
+    title: "Client setup from ~2 days to under 2 hours with an AI configuration engine",
     kicker: "B2B SaaS · AI · Onboarding",
     where: "Taqtics",
     when: "2025",
@@ -80,11 +80,11 @@ export const featured: Featured[] = [
     },
     problem: "Every client checklist was configured by hand. The team managed 3–4 a day, so go-lives waited on setup.",
     decision: "The product already stored forms as JSON. I got engineering to add a JSON upload and built an AI tool that turns an SOP into that JSON.",
-    result: "About 30 seconds per checklist. 15+ enterprise accounts went live without custom implementation.",
+    result: "Setup fell from ~2 days to under 2 hours (about 30 seconds for the AI step). 15+ enterprise accounts went live without custom engineering.",
   },
   {
     slug: "onboarding-paths",
-    title: "30/60/90-day onboarding paths for frontline teams",
+    title: "~30% lower frontline attrition with 30/60/90-day onboarding paths",
     kicker: "B2B SaaS · Retention · Learning",
     where: "Taqtics",
     when: "2025",
@@ -102,7 +102,7 @@ export const featured: Featured[] = [
   },
   {
     slug: "connect-marketplace",
-    title: "Launching a services marketplace by going narrow first",
+    title: "65% of vendor quotes accepted in month one by launching a marketplace narrow",
     kicker: "Marketplace · 0 → 1 · B2C",
     where: "Connect",
     when: "2024",
@@ -135,7 +135,7 @@ export const moreWork: Work[] = [
     where: "Taqtics · Issue tracking",
     problem: "Tickets moved between departments with no owner, and the same issues kept coming back.",
     what: "Closing a ticket now requires a root-cause note plus corrective and preventive actions. Clients can configure the workflow.",
-    result: "70% fewer reopened tickets in the same category at a location.",
+    result: "Median resolution fell from 15 days to under 2 days across 20+ clients, and reopened tickets in the same category at a location fell 70%.",
   },
   {
     title: "Custom reports without custom builds",
@@ -228,31 +228,43 @@ export type Step = {
   line: string;
   link?: { label: string; href: string };
   state?: "now" | "next";
+  weight: number; // relative card width on desktop, roughly the time spent there
 };
 
 export const journey: Step[] = [
   {
     when: "2019–22",
+    weight: 1,
     org: "University of Delhi",
     role: "B.Sc. Electronics",
     line: "Led a 50+ member society; represented Haryana twice in national energy conservation.",
     link: { label: "Arduino build", href: "/case/ldr" },
   },
-  { when: "2022", org: "BYJU'S", role: "Business Development Intern", line: "Closed ₹50,000 in 4 weeks from 120+ self-sourced leads." },
+  { when: "Sep–Oct 2022", weight: 0.75, org: "BYJU'S", role: "Business Development Intern", line: "Closed ₹50,000 in 4 weeks from 120+ self-sourced leads." },
   {
-    when: "2023–24",
+    when: "Feb 2023 – Mar 2024",
+    weight: 1.7,
     org: "Genpact",
     role: "MIS & Fraud Analytics, US fintech",
     line: "Fraud signals and risk reporting across payments, core banking, identity and lending. 20% faster error resolution.",
   },
   {
-    when: "2024",
+    when: "Mar – Sep 2024",
+    weight: 1.3,
     org: "Connect",
     role: "Product Management Intern",
     line: "Helped launch a services marketplace; 65% quote-to-client conversion in month one.",
     link: { label: "Read the case", href: "/case/connect-marketplace" },
   },
-  { when: "Late 2024", org: "CAT prep", role: "97%ile in Quant, strong DILR", line: "VARC didn't go my way. By then I knew I wanted to build products, so I went straight into product work." },
-  { when: "2025–now", org: "Taqtics", role: "Product Specialist", line: "Discovery, prioritisation and delivery for 25+ enterprise brands.", state: "now" },
-  { when: "Next", org: "Your team?", role: "Product role", line: "B2B, B2C or marketplaces. The problem matters more than the label.", state: "next" },
+  { when: "Late 2024", weight: 0.75, org: "CAT prep", role: "97%ile in Quant, strong DILR", line: "VARC didn't go my way. By then I knew I wanted to build products, so I went straight into product work." },
+  {
+    when: "Apr 2025 – now",
+    weight: 2.4,
+    org: "Taqtics",
+    role: "Product Specialist · Enterprise SaaS",
+    line: "Own discovery, prioritisation and delivery for 25+ enterprise retail and restaurant brands. Shipped AI client setup, 30/60/90-day onboarding paths, corrective-action workflows and configurable analytics, and cut account launch time from ~8 weeks to ~4.",
+    link: { label: "See selected work", href: "#work" },
+    state: "now",
+  },
+  { when: "Next", weight: 1.1, org: "Your team?", role: "Product role", line: "B2B, B2C or marketplaces. The problem matters more than the label.", state: "next" },
 ];

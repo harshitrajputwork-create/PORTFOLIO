@@ -105,7 +105,7 @@ img { max-width: 100%; }
 .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-top: 28px; }
 .proof-tile { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow); transition: transform .12s; }
 .proof-tile:hover { transform: translate(-2px, -2px); }
-.proof-val { font-size: 40px; line-height: 1; }
+.proof-val { font-size: clamp(26px, 2.5vw, 34px); line-height: 1.05; white-space: nowrap; }
 .proof-tile b { font-size: 17px; }
 .proof-ctx { font-size: 14px; }
 .proof-more { margin-top: auto; padding-top: 6px; font: 700 12px var(--mono); }
@@ -192,7 +192,7 @@ img { max-width: 100%; }
 .hire-wa { font-weight: 700; text-decoration: underline; text-decoration-color: #25d366; text-decoration-thickness: 3px; text-underline-offset: 4px; }
 .journey > li.next p { margin-bottom: 10px; }
 .journey-title { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
-.journey { position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; padding-top: 22px; }
+.journey { position: relative; display: grid; grid-template-columns: var(--j-cols, repeat(7, minmax(0, 1fr))); gap: 12px; padding-top: 22px; }
 .journey::before { content: ""; position: absolute; left: 8px; right: 8px; top: 7px; border-top: 3px solid var(--ink); }
 .journey > li { position: relative; display: flex; flex-direction: column; gap: 2px; padding: 12px 12px 12px; background: var(--card); border: var(--thin); border-radius: 12px; min-width: 0; }
 .journey > li::before { content: ""; position: absolute; top: -22px; left: 12px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--ink); }
@@ -205,6 +205,10 @@ img { max-width: 100%; }
 .j-org { font-family: var(--display); font-size: 17px; line-height: 1.15; }
 .j-role { font-size: 13px; font-weight: 700; line-height: 1.3; }
 .journey p { font-size: 12.5px; line-height: 1.4; margin-top: 4px; }
+.journey > li.j-small .j-org { font-size: 15px; }
+.journey > li.j-small .j-role { font-size: 12px; }
+.journey > li.j-small p { font-size: 11.5px; }
+.journey > li.now p { font-size: 13.5px; }
 .j-link { margin-top: auto; padding-top: 6px; font: 700 12px var(--mono); text-decoration: underline; text-underline-offset: 3px; }
 
 @media (max-width: 1000px) {
