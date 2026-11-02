@@ -104,12 +104,24 @@ export default function IssuePrototype() {
 
   return (
     <div className="pt">
+      <nav className="pt-rail" aria-hidden>
+        <span className="pt-logo">T</span>
+        {["⊞", "📅", "🎫", "💬", "📊", "🔧"].map((i, n) => <span key={i} className={`pt-ico ${(view === "store" && n === 2) || (view === "ho" && n === 5) ? "on" : ""}`}>{i}</span>)}
+        <span className="pt-ico pt-ico-end">⚙️</span>
+        <span className="pt-ico">❓</span>
+      </nav>
+      <div className="pt-main">
+      <header className="pt-top">
+        <b className="pt-title">{view === "store" ? "Corrective Actions" : "Work Order Dashboard"}</b>
+        <span className="pt-bell" aria-hidden>🔔<i>5</i></span>
+        <span className="pt-user" aria-hidden><i>A</i>Admin ▾</span>
+      </header>
       <div className="pt-bar">
-        <span className="pt-dots" aria-hidden><i /><i /><i /></span>
         <div className="pt-tabs" role="tablist">
           <button role="tab" aria-selected={view === "store"} className={view === "store" ? "on" : ""} onClick={() => setView("store")}>Store</button>
           <button role="tab" aria-selected={view === "ho"} className={view === "ho" ? "on" : ""} onClick={() => setView("ho")}>Head Office</button>
         </div>
+        <span className="pt-sub">{view === "store" ? "Every failed check becomes an owned action." : "Group store tickets into vendor work orders."}</span>
         <button className="pt-reset" onClick={reset}>Reset demo</button>
       </div>
 
@@ -119,7 +131,7 @@ export default function IssuePrototype() {
             <div className="pt-list-head"><b>Actions from failed checks</b><span>{openCount} open</span></div>
             {tickets.map((x) => (
               <button key={x.id} className={`pt-item ${x.id === sel ? "sel" : ""} ${x.status === "Closed" ? "done" : ""}`} onClick={() => { setSel(x.id); setForm({ cause: "", corrective: "", preventive: "" }); }}>
-                <span className="pt-item-top"><span className="mono">{x.id}</span><span className={`pt-pill ${x.status === "Closed" ? "pt-st-closed" : x.status === "Escalated" ? "pt-st-esc" : "pt-st-open"}`}>{x.status}</span></span>
+                <span className="pt-item-top"><span className="pt-id">{x.id}</span><span className={`pt-pill ${x.status === "Closed" ? "pt-st-closed" : x.status === "Escalated" ? "pt-st-esc" : "pt-st-open"}`}>{x.status}</span></span>
                 <b>{x.title}</b>
                 <span className="pt-meta">{x.store} · <span className={sevClass(x.severity)}>{x.severity}</span></span>
               </button>
@@ -128,7 +140,7 @@ export default function IssuePrototype() {
 
           <section className="pt-detail">
             <div className="pt-detail-head">
-              <span className="mono pt-muted">{t.id} · from “{t.source}”</span>
+              <span className="pt-muted">{t.id} · from “{t.source}”</span>
               <h4>{t.title}</h4>
               <div className="pt-chips">
                 <span className="pt-chip">👤 {t.owner}</span>
@@ -210,7 +222,7 @@ export default function IssuePrototype() {
             ) : (
               <div>
                 <div className="pt-detail-head">
-                  <span className="mono pt-muted">{wo.id} · {wo.region} · {wo.tickets.length} ticket{wo.tickets.length > 1 ? "s" : ""}</span>
+                  <span className="pt-muted">{wo.id} · {wo.region} · {wo.tickets.length} ticket{wo.tickets.length > 1 ? "s" : ""}</span>
                   <h4>{wo.vendor.name}</h4>
                   {wos.length > 1 && <div className="pt-wolist">{wos.map((w) => <button key={w.id} className={`pt-chip ${w.id === wo.id ? "on" : ""}`} onClick={() => setOpenWo(w.id)}>{w.id}</button>)}</div>}
                 </div>
@@ -243,7 +255,8 @@ export default function IssuePrototype() {
           </section>
         </div>
       )}
-      <p className="pt-foot mono">Prototype I built to show the flow · made-up stores, vendors and data · not the production UI</p>
+      <p className="pt-foot">Prototype I built to show the flow · made-up stores, vendors and data · not the production UI</p>
+      </div>
     </div>
   );
 }
