@@ -50,9 +50,9 @@ export default function Home() {
       {/* JOURNEY: right under the hero, one glance */}
       <section id="about" className="wrap journey-wrap" aria-label="My journey">
         <h2 className="journey-title mono">The journey so far →</h2>
-        <ol className="journey">
+        <ol className="journey" style={{ "--j-cols": journey.map((j) => `${j.weight}fr`).join(" ") } as React.CSSProperties}>
           {journey.map((j) => (
-            <li key={j.org} className={j.state ?? ""}>
+            <li key={j.org} className={`${j.state ?? ""} ${j.weight < 1 ? "j-small" : ""}`}>
               <span className="j-when mono">{j.when}</span>
               <b className="j-org">{j.org}</b>
               <span className="j-role">{j.role}</span>

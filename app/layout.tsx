@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Harshit Rajput · Product Specialist",
+  title: "Harshit Rajput · Product, Enterprise SaaS & AI",
   description:
-    "Product Specialist at Taqtics. I turn complex business workflows into simpler software: AI-assisted onboarding, 30/60/90-day training paths, and a marketplace launch.",
+    "Product Specialist at Taqtics working across enterprise SaaS, automation and AI. Client setup from ~2 days to under 2 hours, ~30% lower frontline attrition, and a marketplace launch.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

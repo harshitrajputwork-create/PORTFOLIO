@@ -30,7 +30,7 @@ export type CaseMeta = {
 
 export const caseMeta: Record<string, CaseMeta> = {
   "ai-configuration": {
-    title: "Client setup in 30 seconds with an AI configuration engine",
+    title: "Client setup from ~2 days to under 2 hours with an AI configuration engine",
     kicker: "B2B SaaS · AI · Onboarding",
     color: "yellow",
     summary: "How I spotted that client setup was a data-entry problem, not an engineering problem, and fixed it with a JSON upload and an AI tool.",
@@ -43,11 +43,11 @@ export const caseMeta: Record<string, CaseMeta> = {
     tldr: {
       problem: "Checklists were configured by hand, 3–4 a day, which held up every go-live.",
       decision: "Upload JSON directly and let AI write the JSON from the client's SOP.",
-      result: "About 30 seconds per checklist; 15+ enterprise accounts live with no custom implementation.",
+      result: "Setup from ~2 days to under 2 hours (about 30 seconds for the AI step); 15+ enterprise accounts live with no custom engineering.",
     },
   },
   "onboarding-paths": {
-    title: "30/60/90-day onboarding paths for frontline teams",
+    title: "~30% lower frontline attrition with 30/60/90-day onboarding paths",
     kicker: "B2B SaaS · Retention · Learning",
     color: "pink",
     summary: "A structured first 90 days for new store staff, which I later made configurable for seasonal campaigns and promotions.",
@@ -64,7 +64,7 @@ export const caseMeta: Record<string, CaseMeta> = {
     },
   },
   "connect-marketplace": {
-    title: "Launching a services marketplace by going narrow first",
+    title: "65% of vendor quotes accepted in month one by launching a marketplace narrow",
     kicker: "Marketplace · 0 → 1 · B2C",
     color: "blue",
     summary: "Why we picked two verticals out of four, started with a handful of vendors, and charged vendors from day one.",
@@ -191,7 +191,8 @@ export const caseBodies: Record<string, Block[]> = {
       kind: "stats",
       heading: "What changed",
       items: [
-        { value: "30 sec", label: "per checklist, down from 3–4 checklists a day" },
+        { value: "~2 days → <2 hrs", label: "to set up a client's checklists" },
+        { value: "30 sec", label: "for the AI to turn one SOP into a checklist, down from 3–4 checklists a day by hand" },
         { value: "15+", label: "enterprise accounts live with no custom implementation" },
         { value: "0", label: "engineering needed per new client setup" },
       ],
