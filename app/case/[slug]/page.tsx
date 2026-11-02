@@ -192,6 +192,7 @@ function Section({ b }: { b: Block }) {
           <h2>{b.heading}</h2>
           {b.note && <p className="cs-note cs-note-top">{b.note}</p>}
           <IssuePrototype />
+          <a className="btn btn-sm bg-yellow cs-open" href="/prototype/issue-resolution" target="_blank" rel="noreferrer">Open the prototype in a new tab ↗</a>
         </section>
       );
     case "images":
