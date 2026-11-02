@@ -112,7 +112,7 @@ export const featured: Featured[] = [
       src: "/case/issue-resolution/card.jpg",
       alt: "Prototype: actions created from failed checks, with an owner, severity, due date and a required root cause before closing",
       label: "An interactive prototype I built of the flow, from store fix to Head Office vendor work order.",
-      open: "/case/issue-resolution#prototype",
+      open: "https://harshit-rajput-portfolio.vercel.app/prototype/issue-resolution",
     },
     problem: "Failed audit checks ended as reports. Tickets bounced between teams with no owner, and the same issues kept coming back.",
     decision: "Every failed check now creates an owned action with a due date, escalation and photo proof, and it can't close without a root cause.",

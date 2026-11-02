@@ -491,3 +491,10 @@ button.pt-chip { cursor: pointer; } .pt-chip.on { background: var(--yellow); }
   .pt-list { border-right: 0; border-bottom: var(--thin); max-height: 300px; overflow-y: auto; }
   .pt-body { min-height: 0; }
 }
+
+/* standalone prototype page */
+.proto-page { max-width: 1180px; margin: 0 auto; padding: 28px 16px 48px; display: flex; flex-direction: column; gap: 18px; }
+.proto-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+.proto-head h1 { font-family: var(--display); font-size: clamp(26px, 3.4vw, 38px); line-height: 1.1; margin: 4px 0 6px; }
+.proto-head p { max-width: 64ch; color: var(--muted); }
+.proto-page .pt-body { min-height: 560px; }
