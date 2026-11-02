@@ -17,7 +17,8 @@ export type Block =
   | { kind: "table"; heading: string; headers: string[]; rows: string[][]; note?: string }
   | { kind: "chips"; heading: string; groups: { label: string; color: string; items: string[] }[] }
   | { kind: "flow"; heading: string; steps: { title: string; sub: string }[]; note?: string }
-  | { kind: "options"; heading: string; items: { name: string; verdict: "chosen" | "rejected" | "later"; why: string }[] };
+  | { kind: "options"; heading: string; items: { name: string; verdict: "chosen" | "rejected" | "later"; why: string }[] }
+  | { kind: "prototype"; heading: string; note?: string };
 
 export type CaseMeta = {
   title: string;
@@ -78,6 +79,23 @@ export const caseMeta: Record<string, CaseMeta> = {
       problem: "Four verticals at once, and no traction or trust in any of them.",
       decision: "Go deep on home services and construction with a small vendor pilot, and charge vendors a one-time subscription.",
       result: "52 of 80 vendor quotes accepted by clients in month one (65%).",
+    },
+  },
+  "issue-resolution": {
+    title: "Issue resolution from 15 days to under 2 days: making every failed check end in a fix",
+    kicker: "B2B SaaS · Operations · Workflow design",
+    color: "lime",
+    summary: "How I turned failed audit checks into owned, tracked actions that can't close without a root cause, and the Head Office layer I proposed on top.",
+    facts: [
+      { label: "Where", value: "Taqtics, frontline-operations SaaS" },
+      { label: "My role", value: "Product Specialist. Found the gap, designed the flow, wrote the spec, rolled it out" },
+      { label: "With", value: "Engineering, and operations teams at client brands" },
+      { label: "Status", value: "Corrective actions live with 20+ clients. Work Orders proposed with a prototype" },
+    ],
+    tldr: {
+      problem: "Failed audit checks ended as reports. Tickets bounced between departments with no owner, and the same issues kept coming back.",
+      decision: "Every failed check creates an action with an owner, severity, due date, escalation and photo proof, and it can't close without a root cause.",
+      result: "Median resolution fell from 15 days to under 2 across 20+ clients, and repeat tickets in the same category fell 70%.",
     },
   },
   mirrordock: {
@@ -210,6 +228,57 @@ export const caseBodies: Record<string, Block[]> = {
         "Track how often an uploaded form is edited afterwards, as a simple accuracy measure for the AI",
         "Show a preview before upload, so obvious mistakes are caught earlier",
         "Build the upload into the product itself, so clients can set up their own checklists",
+      ],
+    },
+  ],
+
+  "issue-resolution": [
+    {
+      kind: "text",
+      heading: "The problem",
+      body:
+        "Retail and restaurant chains run thousands of checklists and audits on Taqtics. When a check failed, say an expired fire extinguisher or an AC down on the sales floor, the result was a red mark in a report. Someone might raise a ticket, but it moved between store, maintenance and area teams with no clear owner, no deadline and no proof that it was fixed. Weeks later the same check failed again at the same store.",
+    },
+    {
+      kind: "flow",
+      heading: "What I designed",
+      steps: [
+        { title: "Failed check", sub: "Any audit or checklist item that fails" },
+        { title: "Action created", sub: "Owner, severity and due date, automatically" },
+        { title: "Escalates", sub: "Moves up to the area manager if it's late" },
+        { title: "Fix + proof", sub: "Photo proof of the fix" },
+        { title: "Close with a reason", sub: "Root cause, corrective and preventive action" },
+      ],
+      note: "Clients configure who owns which category, the escalation path and the deadlines, so the same flow fits a 20-store chain and a 500-store chain.",
+    },
+    {
+      kind: "prototype",
+      heading: "Try it",
+      note: "An interactive prototype I built to show the flow. In the store view, try closing an action: it won't let you until you add photo proof and a root cause. Then switch to Head Office to group a region's tickets into one vendor work order. All data is made up.",
+    },
+    {
+      kind: "options",
+      heading: "The decisions",
+      items: [
+        { name: "Require a root cause to close", verdict: "chosen", why: "An optional field gets skipped. Making it the only way to close turned every fix into a record the next store manager can learn from, which is what stopped repeat issues." },
+        { name: "Create the action automatically from the failed check", verdict: "chosen", why: "Asking staff to raise a ticket after an audit meant many never got raised. Tying the action to the check removed that gap." },
+        { name: "Handle vendor coordination inside tickets", verdict: "rejected", why: "A ticket is one issue at one store, tracked by the store. Bundling many tickets, vendor quotes and invoices into it would have broken the simple ticket model every other client relies on." },
+        { name: "A separate Work Orders layer for Head Office", verdict: "later", why: "Proposed with a prototype. Head Office groups tickets by region, sends them to a vendor, approves a quote and closes with an invoice, while tickets stay unchanged for stores." },
+      ],
+    },
+    {
+      kind: "text",
+      heading: "The next layer: Work Orders",
+      body:
+        "Two clients, a D2C fashion retailer and a home-interiors company, showed the same pattern. After stores raised tickets, a Head Office manager downloaded a CSV every day, grouped tickets by region, and ran vendor quotes, negotiation and approvals over WhatsApp and email. I proposed Work Orders as a new surface on top of tickets, the way Projects and Journeys sit on top of other modules. Strategically it takes Taqtics from a store tool into Head Office, and brings vendors onto the platform, which makes the product much harder to replace.",
+    },
+    {
+      kind: "stats",
+      heading: "Results",
+      items: [
+        { value: "15 days → <2 days", label: "median issue resolution, across 20+ clients" },
+        { value: "70%", label: "fewer repeat tickets in the same category at a store" },
+        { value: "20+", label: "clients using corrective actions" },
       ],
     },
   ],

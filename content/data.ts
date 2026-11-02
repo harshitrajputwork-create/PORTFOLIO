@@ -42,7 +42,7 @@ export const proof = [
     value: "15 days → <2 days",
     label: "median issue resolution",
     context: "Across 20+ clients, once every failed audit item created an owned, tracked corrective action. Reopened tickets fell 70%.",
-    link: "#more-work",
+    link: "/case/issue-resolution",
     color: "lime" as Color,
   },
 ];
@@ -101,6 +101,24 @@ export const featured: Featured[] = [
     result: "Adopted by 20+ clients. 12–13 of them reported attrition drops, averaging ~30%.",
   },
   {
+    slug: "issue-resolution",
+    title: "Issue resolution from 15 days to under 2 days by making every failed check end in a fix",
+    kicker: "B2B SaaS · Operations · Workflow design",
+    where: "Taqtics",
+    when: "2025",
+    color: "lime",
+    flow: ["Failed check", "Owned action", "Escalation", "Root cause", "Closed"],
+    shot: {
+      src: "/case/issue-resolution/card.jpg",
+      alt: "Prototype: actions created from failed checks, with an owner, severity, due date and a required root cause before closing",
+      label: "An interactive prototype I built of the flow, from store fix to Head Office vendor work order.",
+      open: "/case/issue-resolution#prototype",
+    },
+    problem: "Failed audit checks ended as reports. Tickets bounced between teams with no owner, and the same issues kept coming back.",
+    decision: "Every failed check now creates an owned action with a due date, escalation and photo proof, and it can't close without a root cause.",
+    result: "Median resolution fell from 15 days to under 2 across 20+ clients; repeat tickets in the same category fell 70%.",
+  },
+  {
     slug: "connect-marketplace",
     title: "65% of vendor quotes accepted in month one by launching a marketplace narrow",
     kicker: "Marketplace · 0 → 1 · B2C",
@@ -136,6 +154,7 @@ export const moreWork: Work[] = [
     problem: "Tickets moved between departments with no owner, and the same issues kept coming back.",
     what: "Closing a ticket now requires a root-cause note plus corrective and preventive actions. Clients can configure the workflow.",
     result: "Median resolution fell from 15 days to under 2 days across 20+ clients, and reopened tickets in the same category at a location fell 70%.",
+    link: { label: "Read the case and try the prototype", href: "/case/issue-resolution" },
   },
   {
     title: "Custom reports without custom builds",
